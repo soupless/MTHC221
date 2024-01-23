@@ -1,0 +1,144 @@
+% Sets and relations
+% 01/17/2024
+
+
+\section{Sets and relations}
+
+    \begin{dfn}[Cartesian product]
+        Let \(A\) and \(B\) be sets. The \emph{Cartesian product} of \(A\) and \(B\), denoted by \(A \times B\), is defined as \[A \times B \ :=\  \{(a, b) \,|\: a\in A,\, b\in B\}.\]\vspace{-1ex}
+    \end{dfn}
+
+    \begin{dfn}[Relation]
+        A relation \(R\) between sets \(A\) and \(B\) is a subset of \(A \times B\). That is, \(R \subseteq A \times B\).
+    \end{dfn}
+
+    We let \(aRb \equiv (a, b)\in\real\) for each \(a\in A\) and \(b\in B\) where \(R\) is a relation. It is an implicit assumption that \(A\) and \(B\) have to be nonempty, otherwise, the relation is trivial.
+
+    \begin{thm}
+        If \(A\) and \(B\) are finite sets, then there are \(2^{|A| \cdot |B|} - 1\) relations.
+    \end{thm}
+
+    \begin{proof}
+        Let \(A\) and \(B\) be finite sets. Then, the question is equivalent to finding the number of subsets of \(A \times B\), which is \(\left|\pset{A \times B}\right| - 1 = 2^{|A \times B|} - 1 = 2^{|A| \cdot |B|} - 1 \).
+    \end{proof}
+
+    \begin{dfn}[Function]
+        A function \(\phi\) mapping \(X\) into \(Y\) is a relation between \(X\) and \(Y\) with the property that each \(x\in X\) appears as the first member of exactly one ordered pair \((x,y)\in\phi\) for all \(y\in Y\).
+    \end{dfn}
+
+    \begin{dfn}[Domain, codomain, range]
+        Let \(\phi : X \to Y\) be a function mapping \(X\) to \(Y\). Then, 
+        \begin{itemize}
+            \item \(X\) is the domain of \(\phi\),
+            \item \(Y\) is the codomain of \(\phi\),
+            \item \(\phi[X]\) is the range of \(\phi\) such that \(\phi[X] = \{\phi(x) \,\mid\, x\in X\}\).
+        \end{itemize}
+
+        Another notation would be \(X \overset{\phi}{\longrightarrow} Y\) to denote the type signature, and \(x \overset{\phi}{\longmapsto} y\) to denote the function definition.
+    \end{dfn}
+
+    \begin{dfn}[Injective function]
+        A function \(\phi : X \to Y\) is \emph{injective} or one-to-one (1-1) if, for all elements \(x_1\) and \(x_2\) of \(X\), \(\phi(x_1) = \phi(x_2)\) implies \(x_1 = x_2\).
+    \end{dfn}
+
+    \begin{example}
+        Let \(f : \real\to\real\) such that \(f(x) = 2x + 3\) for all \(x\in\real\). Is \(f\) injective?
+
+        Let \(x_1\) and \(x_2\) be arbitrary elements of \(\real\), and suppose that \(f(x_1) = f(x_2)\). Then,
+        \begin{align*}
+            f(x_1) &= f(x_2) \\
+            2x_1 + 3 &= 2x_2 + 3 \\
+            2x_1 &= 2x_2 \\
+            x_1 &= x_2
+        \end{align*}
+        Hence, \(f\) is injective.
+    \end{example}
+
+    \begin{example}
+        Let \(g : \real\to\real\) such that \(g(x) = x^2\) for all \(x\in\real\). Is \(g\) injective?
+
+        No, because \(g(-1) = 1\), and \(g(1) = 1\), but \(-1 \neq 1\).
+    \end{example}
+
+    \begin{dfn}[Surjective function]
+        A function \(\phi : X \to Y\) is surjective or onto if \(\phi[X] = Y\). Equivalently, \(\forall y\!\in\! Y\  \exists x\!\in\! X (\phi(x) = y)\).
+    \end{dfn}
+
+    \begin{example}
+        Let \(F : \real\to\real\) defined by \(F(x) = x^2\) for each \(x\in\real\). Is \(F\) surjective?
+
+        Since \(F(x) \geq 0\) for all \(x\in\real\), then \(F(x) = -1\) has no solution. Hence, \(F\) is not surjective.
+    \end{example}
+
+    \begin{example}
+        Let \(G : \nat \to \nat\) such that \(G(x) = x + 1\) for each \(x\in\nat\). We define \(\nat = \{1, 2, 3, \ldots\}\). Is \(G\) surjective?
+
+        No, because \(G(x) = 1\) has no solution in \(\nat\). Hence, \(G\) is not surjective.
+    \end{example}
+
+    \begin{example}
+        Let \(\phi : \nat\to\nat\) such that \(\phi(n)\) is the \(n\)th prime number for each \(n\in\nat\). Then, \(\phi\) is injective. However, it is not surjective, because \(\phi(x) = 4\) has no solution.
+    \end{example}
+
+    \begin{example}
+        Let \(g : \real\to\real\) such that \(g(x) = x + 1\) for each \(x\in\real\). Prove that \(g\) is surjective.
+
+        Let \(y\in\real\) be arbitrary. Then, \(g(x) = y \implies x + y = 1 \implies x = y - 1\). Since \(g(y - 1) = y - 1 + 1 = y\), this means \(g\) is surjective.
+    \end{example}
+
+    \begin{dfn}[Bijective function]
+        If \(\phi : X \to Y\) is both injective and surjective, then \(\phi\) is bijective.
+    \end{dfn}
+
+    \begin{dfn}[Inverse]
+        Let \(\phi : X \to Y\) be a bijective function. The inverse of \(\phi\), denoted by \(\phi^{-1}\), is the function \(\phi^{-1} : Y \to X\) such that \(\phi^{-1}(y) = x \iff \phi(x) = y\) for all \(x\in X\) and \(y\in Y\).
+    \end{dfn}
+
+    A representation for finite domain maps would be through a matrix representation like \[\phi : \begin{bmatrix}
+        x_1 & x_2 & \cdots & x_n \\
+        \phi(x_1) & \phi(x_2) & \cdots & \phi(x_n)
+    \end{bmatrix}\]
+
+    \begin{dfn}[Function composition]
+        Let \(\phi : A \to B\) and \(\theta : B \to C\) be functions. The composition \(\theta\phi\) is the function \(\theta\phi : A \to C\) defined by \(\theta\phi(a) = \theta\left(\phi(a)\right)\) for each \(a\in A\).
+    \end{dfn}
+
+    \begin{dfn}[Function equality]
+        Let \(f : X \to Y\) and \(g : X \to Y\). Then, \(f = g\) if \(\forall x \in X \left(f(x) = g(x)\right)\).
+    \end{dfn}
+
+    \marker{thm:fcprop}
+    \begin{thm}
+        Given functions \(\alpha : A \to B\), \(\beta : B \to C\), and \(\gamma : C \to D\), then:
+        \begin{enumerate}
+            \item \((\gamma\beta)\alpha = \gamma(\beta\alpha)\). That is, function composition is associative.
+
+            \item If \(\alpha\) and \(\beta\) are both injective, then \(\beta\alpha\) is injective.
+
+            \item If \(\alpha\) and \(\beta\) are both surjective, then \(\beta\alpha\) is also surjective.
+        \end{enumerate}
+    \end{thm}
+
+    \begin{proof} We prove each property listed in \hyperref[thm:fcprop]{the theorem}:
+        \begin{itemize}
+            \item Suppose we have the functions \(\alpha : A \to B\), \(\beta : B \to C\), and \(\gamma : C \to D\). Let \(a\in A\) be arbitrary. Then,
+            \begin{align*}
+                (\gamma\beta)\alpha(a) &= \gamma\beta\left(\alpha(a)\right) \\
+                (\gamma\beta)\alpha(a) &= \gamma\left(\beta\left(\alpha(a)\right)\right) \\\\
+                \gamma(\beta\alpha)(a) &= \gamma\left(\beta\alpha(a)\right) \\
+                \gamma(\beta\alpha)(a) &= \gamma\left(\beta\left(\alpha(a)\right)\right)
+            \end{align*}
+            Hence, \((\gamma\beta)\alpha(a) = \gamma(\beta\alpha)(a)\). Therefore, \((\gamma\beta)\alpha = \gamma(\beta\alpha)\).
+
+            \item Let \(\alpha : A \to B\) and \(\beta : B \to C\) be injective functions. Then, \(\beta\alpha : A \to C\). Suppose that for all \(a_1, a_2 \in A\), \(\beta\alpha(a_1) = \beta\alpha(a_2)\). We get the following derivation:
+            \begin{align*}
+                \beta\alpha(a_1) &= \beta\alpha(a_2) \\
+                \beta\left(\alpha(a_1)\right) &= \beta\left(\alpha(a_2)\right) \\
+                \alpha(a_1) &= \alpha(a_2) \\
+                a_1 &= a_2
+            \end{align*}
+            Therefore, \(\beta\alpha\) is injective.
+
+            \item Let \(\alpha : A \to B\) and \(\beta : B \to C\) be surjective functions. Let \(c \in C\) be arbitrary. Then, there exists \(b \in B\) such that \(\beta(b) = c\). Since \(\alpha\) is surjective, there exists \(a\in A\) such that \(\alpha(a) = b\). Then, \(\beta(b) = \beta(\alpha(a)) = \beta\alpha(a) = c\). Hence, there exists \(a\in A\) such that \(\beta\alpha(a) = c\), and so for all \(c \in C\), there exists \(a\in A\) such that \(\beta\alpha(a) = c\). Therefore, \(\beta\alpha\) is surjective.
+        \end{itemize}
+    \end{proof}

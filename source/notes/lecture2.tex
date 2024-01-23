@@ -1,0 +1,140 @@
+% Sets and relations, continued
+% 01/22/2024
+
+\section{Sets and relations, continued}
+
+    \begin{thm}
+        Let \(\alpha : A \to B\) be a bijective function. Then there exists a function \(\theta : B \to A\) such that \(\forall a\in A\left(\theta\alpha(a) = a\right)\) and \(\forall b\in B \left(\alpha\theta(b) = b\right)\). The function \(\theta\) is called the inverse of \(\alpha\) and is denoted by \(\theta = \alpha^{-1}\).
+    \end{thm}
+
+    \begin{proof}
+        Suppose \(\alpha : A \to B\) is a bijective function. Construct a function \(\theta : B \to A\) satisfying the properties \(\forall a\in A\left(\theta\alpha(a) = a\right)\) and \(\forall b\in B \left(\alpha\theta(b) = b\right)\). We define \(\theta : B \to A\) by \(\theta(b) = a\) iff \(\alpha(a) = b\).
+
+        Let \(a\in A\) be arbitrary. Consider \(\theta\alpha(a)\). Suppose \(\alpha(a) = b\). Then, \(\theta\alpha(a) = \theta\left(\alpha(a)\right) = \theta(b) = a\).
+
+        Let \(b\in B\) be arbitrary. Consider \(\alpha\theta(b)\). Suppose \(\theta(b) = a\). Then, \(\alpha\theta(b) = \alpha\left(\theta(b)\right) = \alpha(a) = b\).
+    \end{proof}
+
+    \begin{dfn}[Identity function]
+        The identity function is a function having the same domain and codomain such that \(x \mapsto x\) for all \(x\) in the domain.
+    \end{dfn}
+
+    \begin{thm}
+        Let \(\alpha : A \to B\) be a bijective function. Then, \(\alpha^{-1} : B \to A\) is bijective.
+    \end{thm}
+
+    \begin{proof}
+        We first prove that \(\alpha^{-1}\) is injective. Let \(b_1, b_2\) be arbitrary elements from \(B\), and suppose that \(\alpha^{-1}(b_1) = \alpha^{-1}(b_2)\). Then,
+        \begin{align*}
+            \alpha^{-1}(b_1) &= \alpha^{-1}(b_2) \\
+            \alpha\alpha^{-1}(b_1) &= \alpha\alpha^{-1}(b_2) \\
+            b_1 &= b_2
+        \end{align*}
+        Hence, \(\alpha^{-1}\) is injective.
+
+        We now prove that \(\alpha^{-1}\) is surjective. Let \(a\in A\). We know that \(\alpha^{-1}\alpha(a) = a\). Since \(\alpha(a)\in B\), this means that there is an element \(b\in B\) such that \(\alpha^{-1}(b) = a\). Hence, for all \(a\in A\), there exists an element \(b\in B\) such that \(\alpha^{-1}(b) = a\), and so \(\alpha^{-1}\) is surjective.
+
+        Therefore, \(\alpha^{-1}\) is surjective.
+    \end{proof}
+
+    \begin{dfn}[Equivalence relation]
+        \(R\) is called an equivalence relation on a set \(S\) if \(R\) is a relation from \(S\) to \(S\) and it satisfies the following:
+        \begin{enumerate}
+            \item \(\forall a\in S (aRa)\).
+            \item \(\forall a,b\in S (aRb \implies bRa)\).
+            \item \(\forall a,b,c\in S (aRb \land bRc \implies aRc).\)
+        \end{enumerate}
+    \end{dfn}
+    
+    \marker{exm:equivR}
+    \begin{example}
+        Define \(R\) on \(\real^*\) such that \(aRb \iff ab > 0\) for all \(a,b\in\real^*\). Let \(a,b,c\in\real^*\) be arbitrary. Since \(a\in\real^*\), we have \(a \neq 0\), and since \(x^2 > 0\) for all nonzero real numbers, we get \(aa > 0\) which is equivalent to \(aRa\). Thus, \(R\) is reflexive. Now, suppose \(aRb\). Then, \(ab > 0\). Multiplication under real numbers is commutative, hence, \(ba > 0\), and so \(bRa\). This means \(R\) is symmetric. Lastly, suppose \(aRb\) and \(bRc\). Then, \(ab > 0\) and \(bc > 0\). We get \(ab^2 c > 0\), and dividing both sides by \(b^2\), we get \(ac > 0\). Hence, \(aRc\), and so \(R\) is transitive.
+
+        Therefore, \(R\) is an equivalence relation.
+    \end{example}
+    
+    \begin{example}
+        Define \(\sim\) on \(\int\) by \(a \sim b \iff a \equiv b \pmod{4}\). We verify if \(\sim\) is an equivalence relation on \(\int\).
+        
+        We have \(4\divs 0 \implies 4\divs a - a\), and so \(a \equiv a \pmod{4}\). Hence, \(\sim\) is reflexive. Now, suppose \(a \sim b\). Then, \(4 \divs a - b \implies 4 \divs (-1)(a - b) \implies 4 \divs b - a\). Hence, \(b \sim a\), and \(\sim\) is symmetric. Lastly, suppose \(a \sim b\) and \(b \sim c\). Then, \(4\divs a - b\) and \(4 \divs b - c\). We have \(4 \divs a - b + b - c \implies 4 \divs a - c\). Hence, \(aRc\), and so \(R\) is transitive.
+        
+        Therefore, \(\sim\) is an equivalence relation on \(\int\).
+    \end{example}
+
+    \begin{dfn}[Equivalence class]
+        Let \(\sim\) be an equivalence relation on \(S\). Let \(a\in S\), The equivalence containing \(a\), denoted by \([a]\), is the set defined by \[[a] := \{x\in S \,\mid\, a \sim x\}.\]
+    \end{dfn}
+
+    \begin{example}
+        We \hyperref[exm:equivR]{have shown} that \(R\) is an equivalence relation on \(\real^*\). Finding the equivalence class containing 2,
+        \begin{align*}
+            [2] &= \{x\in\real^* \,\mid\, 2Rx\} \\
+            [2] &= \{x\in\real^* \,\mid\, 2x > 0\} \\
+            [2] &= \{x\in\real^* \,\mid\, x > 0\} \\
+            [2] &= \real^+
+        \end{align*}
+
+        Finding the equivalence class containing \(\sqrt{2}\),
+        \begin{align*}
+            [\sqrt{2}] &= \{x\in\real^* \,\mid\, \sqrt{2}Rx\} \\
+            [\sqrt{2}] &= \{x\in\real^* \,\mid\, \sqrt{2}x > 0\} \\
+            [\sqrt{2}] &= \{x\in\real^* \,\mid\, x > 0\} \\
+            [\sqrt{2}] &= \real^+
+        \end{align*}
+
+        Finding the equivalence class containing \(-e\),
+        \begin{align*}
+            [-e] &= \{x\in\real^* \,\mid\, -eRx\} \\
+            [-e] &= \{x\in\real^* \,\mid\, -ex > 0\} \\
+            [-e] &= \{x\in\real^* \,\mid\, x < 0\} \\
+            [-e] &= \real^-
+        \end{align*}
+    \end{example}
+
+    \begin{example}
+        We have shown that \(\sim\) is an equivalence relation on \(\int\) where \(a \sim b \iff a \equiv b \pmod{4}\).
+
+        Finding the equivalence class containing \(a\),
+        \begin{align*}
+            [a] &= \{x\in\int \,\mid\, x \sim a\} \\
+            [a] &= \{x\in\int \,\mid\, x \equiv a \pmod{4}\} \\
+            [a] &= \{x\in\int \,\mid\, 4 \divs x - a\} \\
+            [a] &= \{x\in\int \,\mid\, 4 \divs x - a\} \\
+            [a] &= \{x\in\int \,\mid\, 4k = x - a, k\in\int\} \\
+            [a] &= \{x\in\int \,\mid\, 4k + a = x, k\in\int\} \\
+            [a] &= \{4k + a\,\mid\, k\in\int\}
+        \end{align*}
+
+        Hence, the equivalence class containing 0 is just \(\{4k \,\mid\, k\in\int\}\). The equivalence class containing 1 is \(\{4k + 1\,\mid\, k\in\int\}\), \(\{4k + 2\,\mid\, k\in\int\}\) for the equivalence class containing 2, and \(\{4k + 3\,\mid\, k\in\int\}\) for the equivalence class containing 3. The equivalence class containing 5 is just \([1]\) since \(5\in[1]\). Finally, \(\int = [0]\cup[1]\cup[2]\cup[3]\).
+    \end{example}
+
+    \begin{dfn}[Partition, cells]
+        A partition \(P\) of a set \(S\) is a collection of nonempty disjoint subsets of \(S\) whose union is \(S\). Each element of \(P\) is called a \emph{cell}.
+    \end{dfn}
+
+    \begin{example}
+        In \(\int\), one such partition is \(\left\{\int^-, \int^+, \{0\}\right\}\)
+    \end{example}
+
+    \begin{example}
+        Let \(S = \{1, 2, 3, 4, 5\}\). One partition would be \(P_1 = \left\{\{1\}, \{2\}, \{3\}, \{4\}, \{5\}\right\}\). Another partition would be \(P_2 = \left\{\{1,2\}, \{3\}, \{4\}, \{5\}\right\}\). The number of 2-cell partitions of \(S\) would be \(\binom{5}{2}\).
+    \end{example}
+
+    \begin{thm}
+        The equivalence classes of an equivalence relation on a set \(S\) constitute a partition of \(S\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(\sim\) be an equivalence relation on \(S\). For any \(a\in S\), we have \(a\in [a]\). Let \(a,b\in S\) such that \([a] \neq [b]\). There will be two cases:
+        \begin{itemize}
+            \item The intersection of \([a]\) and \([b]\) is nonempty.
+            This means that there exists an element \(x\) in both \([a]\) and \([b]\). Then, \(x \sim a\) and \(x \sim b\), so \(a \sim b\). Let \(y\in S\) be arbitrary. Suppose \(y \in [a]\). Then, \(y \sim a\). Since \(a \sim b\), then \(y \sim b\), so \(y \in [b]\). Hence, \([a] \subseteq [b]\). Similarly, suppose \(y \in [b]\). Then, \(y \sim b\). Then, \(a \sim b\) implies \(b \sim a\), so \(y \sim a\). Hence, \(y \in [a]\), and so \([b] \subseteq [a]\). Hence, \([a] = [b]\). This contradicts our assumption that \([a] \neq [b]\). Hence, \([a] \cap [b] = \emptyset\).
+
+            \item The intersection of \([a]\) and \([b]\) is empty.
+                Hence, \([a] \cap [b] = \emptyset\).
+        \end{itemize}
+        In either case, we get \([a] \cap [b] = \emptyset\).
+
+        Since each equivalence class is disjoint to another, and every element belongs to an equivalence class containing it, this means that the collection of all equivalence classes of \(S\) is a partition of \(S\).
+    \end{proof}
+

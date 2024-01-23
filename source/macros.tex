@@ -1,0 +1,79 @@
+\usepackage{
+    titlesec,
+    hyperref,
+    enumitem,
+    amsmath, amsthm, amssymb,
+    thmbox, 
+    geometry,
+    fancyhdr,
+    % marginnote,
+    indentfirst,
+    parskip,
+    setspace,
+    wrapfig,
+}
+
+\usepackage{graphicx}
+
+\allowdisplaybreaks
+\onehalfspacing
+
+\geometry{
+    paper=a4paper,
+    outer=0.8in,
+    top=1.1in,
+    bottom=1.1in,
+    inner=0.9in,
+    bindingoffset=4mm
+} 
+
+\hypersetup{
+    colorlinks,
+    pdftitle=Abstract Algebra A,
+    pdfauthor=soupless,
+}
+
+\pagestyle{fancy}
+
+\setlength{\headheight}{13.6pt}
+\fancyhead[RO, LE]{\textrm{\rightmark}}
+\fancyhead[LO, RE]{\today}
+\renewcommand{\headrulewidth}{0.75pt}
+\renewcommand{\footrulewidth}{0.75pt}
+
+\renewcommand{\sectionmark}[1]{\markboth{}{Lecture \thesection: #1}}
+
+\titleformat{\section}{\Large\bfseries}{Lecture~\thesection:}{1ex}{}
+
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{10pt}
+
+\renewcommand{\emph}{\textsl}
+
+\newenvironment{recall}
+  {\begin{example}[Recall]}
+  {\end{example}}
+
+\counterwithin{figure}{section}
+
+\thmboxoptions{cut=true, bodystyle=\normalfont, leftmargin=7mm, rightmargin=5mm, headstyle={#1 #2 \normalfont}, titlestyle={ (#1)}, vskip=1.5mm}
+
+
+\newtheorem[M]{thm}{Theorem}[section]
+\newtheorem[L]{dfn}{Definition}[section]
+\newtheorem[S]{note}{Note}[section]
+\newtheorem[S]{cor}{Corollary}[section]
+
+
+\renewcommand{\iff}{\Leftrightarrow}
+
+\newcommand{\oldint}{\int}
+\renewcommand{\int}{\mathbb{Z}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\divs}{\,\mid\,}
+\newcommand{\pset}[1]{\mathcal{P}\left(#1\right)}
+\newcommand{\real}{\mathbb{R}}
+
+\DeclareMathOperator{\diam}{diam}
+
+\newcommand{\marker}[1]{\phantomsection\label{#1}}

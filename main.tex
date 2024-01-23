@@ -1,0 +1,26 @@
+\documentclass[twoside, 10pt]{article}
+
+\input{source/macros.tex}
+\graphicspath{{assets/}}
+
+\title{Abstract Algebra A}
+\author{\texttt{soupless}}
+\date{\today}
+
+\AddToHook{cmd/section/before}{\clearpage}
+\begin{document}
+    \pagenumbering{gobble}
+    \begin{titlepage}
+        \maketitle
+    \end{titlepage}
+
+    \pagenumbering{roman}
+
+    \tableofcontents
+
+    \newpage
+    \pagenumbering{arabic}
+
+    \input{source/notes/lecture1.tex}
+    \input{source/notes/lecture2.tex}
+\end{document}
