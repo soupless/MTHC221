@@ -1,0 +1,162 @@
+% 
+% 01/24/2023
+
+\section{Operations}
+    \begin{dfn}[Binary operation]
+        A binary operation \(*\) on a set \(S\) is a function \(* : S \times S \to S\).
+    \end{dfn}
+
+    We let \(a * b \equiv *((a, b))\) for each \(a, b\in S\).
+
+    \begin{dfn}[Closure]
+        If \(*\) is a binary operation on S, then \(S\) is closed under \(*\).
+    \end{dfn}
+
+    \begin{example}
+        \mbox{}
+
+        \begin{itemize}
+            \item \(+\) is a binary operation on \(\real\) because the signature of \(+\) is \(\real\times\real\to\real\).
+            \item \(-\) is a binary operation on \(\real\) since \(- : \real\times\real \to\real\).
+            \item \(\div\) is not a binary operation on \(\real\) since \(a\div 0\) is not in \(\real\). However, \(\div\) is a binary operation on \(\real \backslash\{0\}\).
+            \item Define \(\theta\) on \(\real^+\) by \(a\theta b = a^b\). Then, \(\theta\) is a binary operation on \(\real^+\).
+            \item Define \(\phi\) on \(\real\) by \(a\phi b = \sqrt{ab}\). Then, \(\phi\) is not a binary operation on \(\real\) since if \(ab < 0\), then \(\sqrt{ab} \not\in\real\).
+        \end{itemize}
+    \end{example}
+
+    \begin{note}[Ordinary addition, ordinary multiplication]
+        We call \(+ : \real\times\real\to\real\) as ordinary addition, and \(\cdot : \real\times\real\to\real\).
+    \end{note}
+
+    \begin{dfn}[Commutative binary operation]
+        A binary operation \(*\) on \(S\) is commutative iff \(\forall a,b\!\in\! S\, (a * b = b * a)\).
+    \end{dfn}
+
+    \begin{dfn}[Set of \(m \times n\) matrices]
+        We define \(M_{mn}(\real)\) as the set of all \(m \times n\) matrices whose entries belong to \(\real\).
+    \end{dfn}
+
+    \begin{dfn}[General linear matrix set]
+        We define \(GL(n, \real)\) as the set of \(n \times n\) nonsingular matrices with real entries.
+    \end{dfn}
+
+    \begin{example}
+        \mbox{}
+
+        \begin{itemize}
+            \item In \(M_{mn}(\real)\), matrix addition is a binary operation. It is also commutative.
+
+            \item In \(GL(n, \real)\), matrix multiplication is a binary operation but it is not commutative. Matrix addition is not a binary operation, i.e., \(I_n + (-1)I_n\) is not in \(GL(n, \real)\).
+        \end{itemize}
+    \end{example}
+
+    \begin{dfn}[Associative binary operation]
+        A binary operation \(*\) on \(S\) is an associative binary operation iff \(\forall a,b,c\!\in\! S\, (a * (b * c) = (a * b) * c)\).
+    \end{dfn}
+
+    \begin{example}
+        Define the operation \(*\) on \(\real\) by \(a * b = a + b + ab\). Is \(*\) an associative binary operation?
+
+        It is trivial that \(*\) is a binary operation. Checking if it is associative,
+        \begin{align*}
+            a * (b * c) &= a * (b + c + bc) \\
+            a * (b * c) &= a + (b + c + bc) + a(b + c + bc)  \\
+            a * (b * c) &= a + b + c + bc + ab + ac + abc  \\
+            (a * b) * c &= (a + b + ab) * c \\
+            (a * b) * c &= (a + b + ab) + c + (a + b + ab)c \\
+            (a * b) * c &= a + b + ab + c + ac + bc + abc
+        \end{align*}
+        We see that \(a * (b * c) = (a * b) * c\). Hence, \(*\) is an associative binary operation.
+    \end{example}
+
+    \begin{example}
+        Let \(\displaystyle S = \left\{\left.\begin{bmatrix}
+            a & -b \\ b & a
+        \end{bmatrix}\right| a,b\in\real\right\}\). Let \(*\) be matrix multiplication. Verify if \(*\) is a commutative or associative binary operation on \(S\).
+
+        Let \(A = \begin{bmatrix} a & -b \\ b & a \end{bmatrix}\) where \(a,b\in\real\), and \(B = \begin{bmatrix} c & -d \\ d & c \end{bmatrix}\) where \(c,d\in\real\). Then,
+        \begin{align*}
+            AB &= \begin{bmatrix} a & -b \\ -b & a \end{bmatrix} *\begin{bmatrix} c & -d \\ d & c \end{bmatrix} \\
+            AB &= \begin{bmatrix}
+                ac - bd & -ad - bc \\
+                ad + bc & ac - bd
+            \end{bmatrix} \\
+            AB &= \begin{bmatrix}
+                ac - bd & -(ad + bc) \\
+                ad + bc & ac - bd
+            \end{bmatrix}
+        \end{align*}
+
+        This means \(AB\in S\). Solving for \(BA\),
+        \begin{align*}
+            BA &= \begin{bmatrix} c & -d & d & c \end{bmatrix} *\begin{bmatrix} a & -b \\ -b & a \end{bmatrix} \\
+            BA &= \begin{bmatrix}
+                ac - bd & -bc - ad \\
+                ad + bc & -bd + ac 
+            \end{bmatrix} \\
+            BA &= \begin{bmatrix}
+                ac - bd & -(ad + bc) \\
+                ad + bc & ac - bd
+            \end{bmatrix}
+        \end{align*}
+        This also means that \(BA\in S\). Note that \(AB = BA\). Hence, matrix multiplication is commutative. It is also associative, since the general matrix multiplication is associative.
+    \end{example}
+
+    \begin{example}
+        Let \(S = \{a, b, c\}\). Define \(*\) on \(S\) by
+        \marker{exm:caytab}
+        \[
+            \begin{array}{c|ccc}
+                * & a & b & c \\ \hline
+                a & b & a & c \\
+                b & c & a & b \\
+                c & b & b & c
+            \end{array}.
+        \]
+
+        Is \(*\) a binary operation? If it is, is it commutative and/or associative?
+
+        The operation \(*\) is a binary operation since every output of \(*\) is in \(S\). It is not commutative, since \(a*c \neq c*a\). Checking if it is associative is left for the reader. 
+    \end{example}
+
+    \begin{thm}
+        There are \(n^{n^2}\) binary operations on a set \(S\) such that \(|S| = n\).
+    \end{thm}
+
+    \begin{proof}
+        We have \(n\) choices for each cell in the \hyperref[exm:caytab]{table}. There are \(n^2\) cells in the matrix, so there will be \(n^{n^2}\) combinations for the matrix. Hence, there are \(n^{n^2}\) binary operations on a set \(S\) such that \(|S| = n\).
+    \end{proof}
+
+    \begin{dfn}[Group]
+        A group \(\langle G, *\rangle\) is a set \(G\), closed under the binary operation \(*\) such that the following axioms hold:
+        \begin{itemize}
+            \item \(\mathcal{G}_1\!: \forall a,b,c\!\in\! G (a * (b * c) = (a * b) * c)\).
+            \item \(\mathcal{G}_2\!: \exists e\!\in\! G\ \forall a\!\in\! G (e * a = a * e = a)\).
+            \item \(\mathcal{G}_3\!: \forall a\!\in\! G\ \exists a'\!\in\! G (a * a' = a' * a = e)\).
+        \end{itemize}
+
+        In the third axiom, \(a'\) is called the inverse of \(a\). We let \(a^{-1} \equiv a'\) for each \(a\in G\).
+    \end{dfn}
+
+    \begin{example}
+        \mbox{}
+
+        \begin{itemize}
+            \item Is \(\langle \real, +\) a group?
+
+            Yes, \(\langle \real, +\) is a group because:
+            \begin{itemize}
+                \item \(+\) is associative,
+                \item \(+\) has an identity element which is \(0\),
+                \item An arbitrary element \(a\) from \(\real\) has an inverse \(-a\) such that \(a + (-a) = 0\).
+            \end{itemize}
+
+            \item Is \(GL(2, \real)\) a group?
+            Yes, \(GL(2, \real)\) is a group because:
+            \begin{itemize}
+                \item Matrix multiplication is associative,
+                \item \(+\) has an identity element which is \(I_2\),
+                \item A nonsingular \(2 \times 2\) matrix has a nonsingular inverse, which is in \(GL(2, \real)\).
+            \end{itemize}
+        \end{itemize}
+    \end{example}
