@@ -1,7 +1,7 @@
-% 
+% Introduction to Groups
 % 01/24/2023
 
-\section{Operations}
+\section{Introduction to groups}
     \begin{dfn}[Binary operation]
         A binary operation \(*\) on a set \(S\) is a function \(* : S \times S \to S\).
     \end{dfn}
@@ -54,6 +54,7 @@
         A binary operation \(*\) on \(S\) is an associative binary operation iff \(\forall a,b,c\!\in\! S\, (a * (b * c) = (a * b) * c)\).
     \end{dfn}
 
+    \marker{exm:starAssoc}
     \begin{example}
         Define the operation \(*\) on \(\real\) by \(a * b = a + b + ab\). Is \(*\) an associative binary operation?
 
@@ -89,7 +90,7 @@
 
         This means \(AB\in S\). Solving for \(BA\),
         \begin{align*}
-            BA &= \begin{bmatrix} c & -d & d & c \end{bmatrix} *\begin{bmatrix} a & -b \\ -b & a \end{bmatrix} \\
+            BA &= \begin{bmatrix} c & -d \\ d & c \end{bmatrix} *\begin{bmatrix} a & -b \\ -b & a \end{bmatrix} \\
             BA &= \begin{bmatrix}
                 ac - bd & -bc - ad \\
                 ad + bc & -bd + ac 

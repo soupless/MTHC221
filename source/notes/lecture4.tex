@@ -1,0 +1,199 @@
+% Introduction to Groups, continued
+% 01/29/2024
+
+\section{Introduction to groups, continued}
+    \begin{dfn}[Set of integers modulo \(n\)]
+        We define \(\int_n\) be the set of integers modulo \(n\), such that \[\int_n = \{0, 1, 2, \ldots, n - 1\}.\] 
+
+        Note that \(a \pmod{n}\) is the remainder when \(a\) is divided by \(n\).
+    \end{dfn}
+
+    \begin{example}
+        Let \(*\) be the binary operation on \(\int_n\) defined by \(a * b = (a + b)\pmod{n}\). The table for \(*\) on \(\int_4\) is
+        \[
+            \begin{array}{c|c|c|c|c|}
+                * & 0 & 1 & 2 & 3 \\ \hline
+                0 & 0 & 1 & 2 & 3 \\ \hline
+                1 & 1 & 2 & 3 & 0 \\ \hline
+                2 & 2 & 3 & 0 & 1 \\ \hline
+                3 & 3 & 0 & 1 & 2 \\ \hline
+            \end{array}
+        \]
+    \end{example}
+
+    \begin{thm}
+        \(\langle \int_n, * \rangle\) is a group.
+    \end{thm}
+
+    \begin{proof}
+        This is because it satisfies the group axioms:
+        \begin{itemize}
+            \item The operation \(*\) is a binary operation in \(\int_n\).
+            \item The binary operation \(*\) is associative on \(\int_n\).
+            \item The binary operation \(*\) has an identity element which is \(0\).
+            \item If \(a\in\int_n\), then \(a^{-1} = n - a \pmod{n}\).
+        \end{itemize}
+    \end{proof}
+
+    \begin{dfn}[Set of integers relatively prime to \(n\)]
+        We define \(U_n\) to be the set of integers relatively prime to \(n\). That is, \[U_n = \{x \,\mid\, 1 \leq x \leq n \land \gcd(n, x) = 1\}.\]
+    \end{dfn}
+
+    \begin{thm}
+        \(\langle U_n, *\rangle\) is a group.
+    \end{thm}
+
+    \begin{proof}
+        \(\langle U_n, *\rangle\) satisfies the group axioms:
+        \begin{itemize}
+            \item \(U_n\) is closed under \(*\).
+
+            Let \(a, b\in U_n\). Then, \(\gcd(a, n) = \gcd(b, n) = 1\). Suppose \(\gcd(ab, n) \neq 1\). Then, there exists an integer \(p\) such that \(p \mid n\) and \(p \mid ab\). Let \(d\) be such a number. Then, by Euclid's lemma, if \(p \mid ab\), then \(p \mid a\) or \(p \mid b\). Suppose \(p \mid a\). Then, \(\gcd(a, n) \geq p\) which contradicts our assumption that \(\gcd(a, n) = 1\). Similarly, if \(p \mid b\), then \(\gcd(b, n) \geq p\) which also contradicts our assumption that \(\gcd(b, n) = 1\). Regardless of the case, we have a contradiction.
+            
+            Hence, \(\gcd(ab, n) = 1\).
+        \end{itemize}
+    \end{proof}
+
+    \mbox{}
+
+    \begin{example}
+        \mbox{}
+
+        \begin{itemize}
+            \item The table for \(\int_6\) is 
+            \[
+                \begin{array}{c|c|c|c|c|c|c|}
+                    * & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+                    0 & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+                    1 & 1 & 2 & 3 & 4 & 5 & 0 \\ \hline
+                    2 & 2 & 3 & 4 & 5 & 0 & 1 \\ \hline
+                    3 & 3 & 4 & 5 & 0 & 1 & 2 \\ \hline
+                    4 & 4 & 5 & 0 & 1 & 2 & 3 \\ \hline
+                    5 & 5 & 0 & 1 & 2 & 3 & 4 \\ \hline
+                \end{array}
+            \]
+
+            \item The table for \(U_9\) is
+            \[
+                \begin{array}{c|c|c|c|c|c|c|}
+                    * & 1 & 2 & 4 & 5 & 7 & 8 \\ \hline
+                    1 & 1 & 2 & 4 & 5 & 7 & 8 \\ \hline
+                    2 & 2 & 4 & 8 & 1 & 5 & 7 \\ \hline
+                    4 & 4 & 8 & 7 & 2 & 1 & 5 \\ \hline
+                    5 & 5 & 1 & 2 & 7 & 8 & 4 \\ \hline
+                    7 & 7 & 5 & 1 & 8 & 4 & 2 \\ \hline
+                    8 & 8 & 7 & 5 & 4 & 2 & 1 \\ \hline
+                \end{array}
+            \]
+
+            \item Let \(G = \{e, a, b, c, d\}\) where \(e\) is the identity in \(G\) under \(*\). Complete the table below: 
+            \[
+                \begin{array}{c|c|c|c|c|c|}
+                    * & e & a & b & c & d \\ \hline
+                    e & \color{blue}{e} & a & b & c & d \\ \hline
+                    a & a & \color{blue}{b} & c & d & e \\ \hline
+                    b & b & \color{blue}{c} & \color{blue}{d} & \color{blue}{e} & a \\ \hline
+                    c & c & \color{blue}{d} & e & \color{blue}{a} & \color{blue}{b} \\ \hline
+                    d & d & e & a & b & c \\ \hline
+                \end{array}
+            \]
+        \end{itemize}
+    \end{example}
+
+    \begin{example}
+        Define \(*\) on \(\real\) by \(a * b = a + b + ab\). Verify if \(\langle \real, * \rangle\) is a group.
+
+        We can see that \(a + b + ab = (a + 1)(b + 1) - 1\). Since \(a,b\in\real\), then \(a * b\in\real\). We also know that \(*\) \hyperref[exm:starAssoc]{is associative}. Consider \(a * e = a\). Solving for the identity,
+        \begin{align*}
+            a + e + ae &= a \\
+            e + ae &= 0 \\
+            e(1 + a) &= 0
+        \end{align*}
+        This means \(e = 0\). To check if every element in \(\real\) has an inverse under \(*\), suppose \(b = a^{-1}\). Then, \(a * b = 0\). Solving for \(b\) in terms of \(a\),
+        \begin{align*}
+            a + b + ab &= 0 \\
+            b + ab &= -a \\
+            b(1 + a) &= -a \\
+            b &= \frac{-a}{1 + a}
+        \end{align*}
+        We can see that \(b\) exists only if \(a \neq 1\). Hence, not all elements have an inverse, so \(\langle \real, * \rangle\) is not a group. 
+    \end{example}
+
+    \subsection{Elementary Properties of Groups}
+
+        \begin{note}
+            Let \(G\) be a group. For any \(a, b\in G\), we define \(ab\) as \(a*b\) where \(*\) is the binary operation of \(G\), if \(*\) is not stated.
+        \end{note}
+
+        \begin{thm}
+            The identity element in a group is unique.
+        \end{thm}
+
+        \begin{proof}
+            Suppose \(e_1\) and \(e_2\) are both identities of a group. Then, \(e_1e_2 = e_1\) since \(e_2\) is an identity. Similarly, \(e_1e_2 = e_2\) since \(e_1\) is an identity. By transitivity, we have \(e_1 = e_2\).
+        \end{proof}
+
+        \begin{thm}
+            Let \(a, b, c\in G\) where \(G\) is a group. Then,
+            \begin{enumerate}
+                \item[(i)] \(ac = bc \implies a = b\). This is called right cancellation.
+                \item[(ii)] \(ca = cb \implies a = b\). This is called left cancellation.
+            \end{enumerate}
+        \end{thm}
+
+        \begin{proof}
+            Let \(a, b, c\in G\) be arbitrary. We prove each item:
+            \begin{enumerate}
+                \item[(i)] Suppose that \(ac = bc\). Then, \(acc^{-1} = bcc^{-1}\). Since the binary operation in \(G\) is associative, we have \(a(cc^{-1}) = b(cc^{-1})\), which simplifies to \(a = b\).
+
+                \item[(ii)] Suppose that \(ca = cb\). Then, \(c^{-1}ca = c^{-1}cb\). Since the binary operation in \(G\) is associative, we have \((c^{-1}c)a = (c^{-1}c)b\), which simplifies to \(a = b\).
+            \end{enumerate}
+        \end{proof}
+
+        \marker {thm:unique-inverse}
+        \begin{thm}
+            Let \(G\) be a group. The inverse of any element in \(G\) is unique.
+        \end{thm}
+
+        \begin{proof}
+            Let \(g\in G\) be arbitrary. Let \(a, b\in G\) be inverses of \(g\). Then, \(ag = ga = e\), and \(bg = gb = e\), where \(e\) is the identity in \(G\). Consider \(agb\). We have \(a(gb) = b\), and \((ag)b = a\). Since \(G\) is associative, then \(a = b\).
+        \end{proof}
+
+        \begin{thm}
+            Let \(G\) be a group and let \(a \in G\). Then, \((a^{-1})^{-1} = a\).
+        \end{thm}
+
+        \begin{proof}
+            Since the inverse of \(a\) is \(a^{-1}\) and by the \hyperref[thm:unique-inverse]{uniqueness of inverses}, the inverse of \(a^{-1}\), \((a^{-1})^{-1}\), is \(a\).
+        \end{proof}
+
+        \begin{thm}
+            Let \(G\) be a group. If \(a, b\in G\), then \((ab)^{-1} = b^{-1}a^{-1}\).
+        \end{thm}
+
+        \begin{proof}
+            Let \(G\) be a group, and let \(a,b\in G\) be arbitrary. Then,
+            \begin{align*}
+                ab(ab)^{-1} &= e \\
+                a^{-1}ab(ab)^{-1} &= a^{-1}e \\
+                eb(ab)^{-1} &= a^{-1} \\
+                b^{-1}eb(ab)^{-1} &= b^{-1}a^{-1} \\
+                b^{-1}b(ab)^{-1} &= b^{-1}a^{-1} \\
+                (ab)^{-1} &= b^{-1}a^{-1}
+            \end{align*}
+        \end{proof}
+
+        \begin{thm}
+            Let \(G\) be a group. Let \(a_1, a_2, \ldots, a_n\in G\). Then,
+            \((a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
+        \end{thm}
+
+        \begin{proof}
+            Let \(n\in \nat\) be arbitrary, and suppose that for all \(i\in\nat\) less than \(n\), \((a_1a_2\cdots a_i)^{-1} = a_{i}^{-1} a_{i - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
+            \begin{align*}
+                (a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} (a_1a_2\cdots a_{n - 1})^{-1} \\
+                (a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}
+            \end{align*}
+
+            Hence, \((a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
+        \end{proof}
