@@ -2,6 +2,7 @@
 % 01/29/2024
 
 \section{Introduction to groups, continued}
+    \renewcommand{\subsectionmark}{January 29, 2024}
     \begin{dfn}[Set of integers modulo \(n\)]
         We define \(\int_n\) be the set of integers modulo \(n\), such that \[\int_n = \{0, 1, 2, \ldots, n - 1\}.\] 
 
@@ -49,12 +50,22 @@
             \item \(U_n\) is closed under \(*\).
 
             Let \(a, b\in U_n\). Then, \(\gcd(a, n) = \gcd(b, n) = 1\). Suppose \(\gcd(ab, n) \neq 1\). Then, there exists an integer \(p\) such that \(p \mid n\) and \(p \mid ab\). Let \(d\) be such a number. Then, by Euclid's lemma, if \(p \mid ab\), then \(p \mid a\) or \(p \mid b\). Suppose \(p \mid a\). Then, \(\gcd(a, n) \geq p\) which contradicts our assumption that \(\gcd(a, n) = 1\). Similarly, if \(p \mid b\), then \(\gcd(b, n) \geq p\) which also contradicts our assumption that \(\gcd(b, n) = 1\). Regardless of the case, we have a contradiction.
-            
+
             Hence, \(\gcd(ab, n) = 1\).
+
+            \item \(*\) is associative.
+
+            Multiplying integers in modular arithmetic is associative. Since \(U_n\) has a binary operation utilizing modular arithmetic, this means \(*\) is associative.
+
+            \item \(U_n\) has an identity element under \(*\).
+
+            Let \(a, e\in U_n\). Then, we must have \(ae = a\), or equivalently, \(ae \equiv a \pmod{n}\). Then, \(n \divs ae - a\) which is the same as \(n \divs a(e - 1)\). By Euclid's lemma, either \(n \divs a\) or \(n \divs e - 1\), which is the same as \(e \equiv 1 \pmod{n}\). Clearly, \(\gcd(1, n) = 1\), so our identity element is 1.
+
+            \item Every element in \(U_n\) has an inverse.
+
+            We are to find \(x\in U_n\) such that \(ax \equiv 1 \pmod{n}\) for every \(a\in U_n\). This is the same as finding \(x\) such that \(nk = ax - 1 \iff ax - nk = 1\). By \href{https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity}{Bezout's lemma \ExternalLink}, there exists an \(x\) satisfying the equation. Hence, \(a\) has an inverse in \(U_n\).
         \end{itemize}
     \end{proof}
-
-    \mbox{}
 
     \begin{example}
         \mbox{}
@@ -87,6 +98,8 @@
             \]
 
             \item Let \(G = \{e, a, b, c, d\}\) where \(e\) is the identity in \(G\) under \(*\). Complete the table below: 
+
+            % TODO: Provide explanation
             \[
                 \begin{array}{c|c|c|c|c|c|}
                     * & e & a & b & c & d \\ \hline
@@ -119,81 +132,79 @@
         We can see that \(b\) exists only if \(a \neq 1\). Hence, not all elements have an inverse, so \(\langle \real, * \rangle\) is not a group. 
     \end{example}
 
-    \subsection{Elementary Properties of Groups}
+    \begin{note}
+        Let \(G\) be a group. For any \(a, b\in G\), we define \(ab\) as \(a*b\) where \(*\) is the binary operation of \(G\), if \(*\) is not stated.
+    \end{note}
 
-        \begin{note}
-            Let \(G\) be a group. For any \(a, b\in G\), we define \(ab\) as \(a*b\) where \(*\) is the binary operation of \(G\), if \(*\) is not stated.
-        \end{note}
+    \begin{thm}
+        The identity element in a group is unique.
+    \end{thm}
 
-        \begin{thm}
-            The identity element in a group is unique.
-        \end{thm}
+    \begin{proof}
+        Suppose \(e_1\) and \(e_2\) are both identities of a group. Then, \(e_1e_2 = e_1\) since \(e_2\) is an identity. Similarly, \(e_1e_2 = e_2\) since \(e_1\) is an identity. By transitivity, we have \(e_1 = e_2\).
+    \end{proof}
 
-        \begin{proof}
-            Suppose \(e_1\) and \(e_2\) are both identities of a group. Then, \(e_1e_2 = e_1\) since \(e_2\) is an identity. Similarly, \(e_1e_2 = e_2\) since \(e_1\) is an identity. By transitivity, we have \(e_1 = e_2\).
-        \end{proof}
+    \begin{thm}
+        Let \(a, b, c\in G\) where \(G\) is a group. Then,
+        \begin{enumerate}
+            \item[(i)] \(ac = bc \implies a = b\). This is called right cancellation.
+            \item[(ii)] \(ca = cb \implies a = b\). This is called left cancellation.
+        \end{enumerate}
+    \end{thm}
 
-        \begin{thm}
-            Let \(a, b, c\in G\) where \(G\) is a group. Then,
-            \begin{enumerate}
-                \item[(i)] \(ac = bc \implies a = b\). This is called right cancellation.
-                \item[(ii)] \(ca = cb \implies a = b\). This is called left cancellation.
-            \end{enumerate}
-        \end{thm}
+    \begin{proof}
+        Let \(a, b, c\in G\) be arbitrary. We prove each item:
+        \begin{enumerate}
+            \item[(i)] Suppose that \(ac = bc\). Then, \(acc^{-1} = bcc^{-1}\). Since the binary operation in \(G\) is associative, we have \(a(cc^{-1}) = b(cc^{-1})\), which simplifies to \(a = b\).
 
-        \begin{proof}
-            Let \(a, b, c\in G\) be arbitrary. We prove each item:
-            \begin{enumerate}
-                \item[(i)] Suppose that \(ac = bc\). Then, \(acc^{-1} = bcc^{-1}\). Since the binary operation in \(G\) is associative, we have \(a(cc^{-1}) = b(cc^{-1})\), which simplifies to \(a = b\).
+            \item[(ii)] Suppose that \(ca = cb\). Then, \(c^{-1}ca = c^{-1}cb\). Since the binary operation in \(G\) is associative, we have \((c^{-1}c)a = (c^{-1}c)b\), which simplifies to \(a = b\).
+        \end{enumerate}
+    \end{proof}
 
-                \item[(ii)] Suppose that \(ca = cb\). Then, \(c^{-1}ca = c^{-1}cb\). Since the binary operation in \(G\) is associative, we have \((c^{-1}c)a = (c^{-1}c)b\), which simplifies to \(a = b\).
-            \end{enumerate}
-        \end{proof}
+    \marker {thm:unique-inverse}
+    \begin{thm}
+        Let \(G\) be a group. The inverse of any element in \(G\) is unique.
+    \end{thm}
 
-        \marker {thm:unique-inverse}
-        \begin{thm}
-            Let \(G\) be a group. The inverse of any element in \(G\) is unique.
-        \end{thm}
+    \begin{proof}
+        Let \(g\in G\) be arbitrary. Let \(a, b\in G\) be inverses of \(g\). Then, \(ag = ga = e\), and \(bg = gb = e\), where \(e\) is the identity in \(G\). Consider \(agb\). We have \(a(gb) = b\), and \((ag)b = a\). Since \(G\) is associative, then \(a = b\).
+    \end{proof}
 
-        \begin{proof}
-            Let \(g\in G\) be arbitrary. Let \(a, b\in G\) be inverses of \(g\). Then, \(ag = ga = e\), and \(bg = gb = e\), where \(e\) is the identity in \(G\). Consider \(agb\). We have \(a(gb) = b\), and \((ag)b = a\). Since \(G\) is associative, then \(a = b\).
-        \end{proof}
+    \begin{thm}
+        Let \(G\) be a group and let \(a \in G\). Then, \((a^{-1})^{-1} = a\).
+    \end{thm}
 
-        \begin{thm}
-            Let \(G\) be a group and let \(a \in G\). Then, \((a^{-1})^{-1} = a\).
-        \end{thm}
+    \begin{proof}
+        Since the inverse of \(a\) is \(a^{-1}\) and by the \hyperref[thm:unique-inverse]{uniqueness of inverses}, the inverse of \(a^{-1}\), \((a^{-1})^{-1}\), is \(a\).
+    \end{proof}
 
-        \begin{proof}
-            Since the inverse of \(a\) is \(a^{-1}\) and by the \hyperref[thm:unique-inverse]{uniqueness of inverses}, the inverse of \(a^{-1}\), \((a^{-1})^{-1}\), is \(a\).
-        \end{proof}
+    \begin{thm}
+        Let \(G\) be a group. If \(a, b\in G\), then \((ab)^{-1} = b^{-1}a^{-1}\).
+    \end{thm}
 
-        \begin{thm}
-            Let \(G\) be a group. If \(a, b\in G\), then \((ab)^{-1} = b^{-1}a^{-1}\).
-        \end{thm}
+    \begin{proof}
+        Let \(G\) be a group, and let \(a,b\in G\) be arbitrary. Then,
+        \begin{align*}
+            ab(ab)^{-1} &= e \\
+            a^{-1}ab(ab)^{-1} &= a^{-1}e \\
+            eb(ab)^{-1} &= a^{-1} \\
+            b^{-1}eb(ab)^{-1} &= b^{-1}a^{-1} \\
+            b^{-1}b(ab)^{-1} &= b^{-1}a^{-1} \\
+            (ab)^{-1} &= b^{-1}a^{-1}
+        \end{align*}
+    \end{proof}
 
-        \begin{proof}
-            Let \(G\) be a group, and let \(a,b\in G\) be arbitrary. Then,
-            \begin{align*}
-                ab(ab)^{-1} &= e \\
-                a^{-1}ab(ab)^{-1} &= a^{-1}e \\
-                eb(ab)^{-1} &= a^{-1} \\
-                b^{-1}eb(ab)^{-1} &= b^{-1}a^{-1} \\
-                b^{-1}b(ab)^{-1} &= b^{-1}a^{-1} \\
-                (ab)^{-1} &= b^{-1}a^{-1}
-            \end{align*}
-        \end{proof}
+    \begin{thm}
+        Let \(G\) be a group. Let \(a_1, a_2, \ldots, a_n\in G\). Then,
+        \((a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
+    \end{thm}
 
-        \begin{thm}
-            Let \(G\) be a group. Let \(a_1, a_2, \ldots, a_n\in G\). Then,
-            \((a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
-        \end{thm}
+    \begin{proof}
+        Let \(n\in \nat\) be arbitrary, and suppose that for all \(i\in\nat\) less than \(n\), \((a_1a_2\cdots a_i)^{-1} = a_{i}^{-1} a_{i - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
+        \begin{align*}
+            (a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} (a_1a_2\cdots a_{n - 1})^{-1} \\
+            (a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}
+        \end{align*}
 
-        \begin{proof}
-            Let \(n\in \nat\) be arbitrary, and suppose that for all \(i\in\nat\) less than \(n\), \((a_1a_2\cdots a_i)^{-1} = a_{i}^{-1} a_{i - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
-            \begin{align*}
-                (a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} (a_1a_2\cdots a_{n - 1})^{-1} \\
-                (a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}
-            \end{align*}
-
-            Hence, \((a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
+        Hence, \((a_1a_2\cdots a_n)^{-1} = a_{n}^{-1} a_{n - 1}^{-1}\cdots a_{2}^{-1}a_{1}^{-1}\).
         \end{proof}
