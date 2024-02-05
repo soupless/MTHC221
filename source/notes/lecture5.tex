@@ -1,0 +1,184 @@
+% Groups, continued
+% 01/31/2024
+
+\section{Groups, continued}
+    \renewcommand{\leftmark}{January 31, 2024}
+
+    \begin{dfn}
+        Let \(G\) be a group, and let \(x\in G\). Let \(n \in \int^+\). We define \(x^n\) as \(\underbrace{x\cdot x \cdots x}_{n\text{ times}}\).
+    \end{dfn}
+
+    \begin{thm}
+        Let \(G\) be a group, and let \(x\in G\). Let \(n \in \int^+\). Then, \((x^n)^{-1} = (x^{-1})^n\).
+    \end{thm}
+
+    This is a corollary of \hyperref[thm:general-product-inverse]{finding the inverse of a product}.
+
+    \begin{thm}
+        Let \(G\) be a group with \(x\in G\). Let \(m, n\in\int\). Then,
+        \begin{enumerate}
+            \item[(i)] \(x^m x^n = x^{m + n}\).
+            \item[(ii)] \((x^m)^n = x^{mn}\).
+        \end{enumerate}
+    \end{thm}
+
+    % | WARNING: Finish the proof
+    The proof is trivial.
+
+    % \begin{proof}
+    %     We prove each item:
+    %     \begin{enumerate}
+    %         \item[(ii)] We prove this by cases:
+    %         \begin{itemize}
+    %             \item[Case 1:] \(m \geq 0\) and \(n \geq 0\).
+
+    %             Trivial.
+
+    %             \item[Case 2:] \(m > 0\), and \(n < 0\).
+
+    %             There will be two cases:
+    %             \begin{itemize}
+    %                 \item[Case 2.1:] \(|m| \geq |n|\).
+
+    %                 This means that \(m + n = k\), where \(k > 0\). 
+    %             \end{itemize}
+    %         \end{itemize}
+    %     \end{enumerate}
+    % \end{proof}
+
+    \begin{example}
+        Let \(G\) be a group, and let \(a, b, c\in G\). Then,
+        \begin{itemize}
+            \item \((a^2 b^{-1} c^{-3})^{-1}\) can be simplified as follows:
+            \begin{align*}
+                (a^2 b^{-1} c^{-3})^{-1} &= (c^{-3})^{-1} (b^{-1})^{-1} (a^2)^{-1} \\
+                (a^2 b^{-1} c^{-3})^{-1} &= c^3 ba^{-2}
+            \end{align*}
+            \item \((a^2 b^{-1}c^{-1})^{-2}\) is equivalent to the following:
+            \begin{align*}
+                (a^2 b^{-1}c^{-1})^{-2} &= \left[(a^2 b^{-1}c^{-1})^{-1}\right]^{2} \\
+                (a^2 b^{-1}c^{-1})^{-2} &= \left[(c^{-1})^{-1} (b^{-1})^{-1}(a^2)^{-1}\right]^{2} \\
+                (a^2 b^{-1}c^{-1})^{-2} &= \left[cba^{-2}\right]^{2}
+            \end{align*}
+        \end{itemize}
+    \end{example}
+
+    \begin{dfn}[Abelian groups]
+        A commutative group is called an abelian group.
+    \end{dfn}
+
+    \begin{thm}
+        Let \(G\) be a group and let \(H = \{x^{-1} \,\mid\, x\in G\}\). Prove that \(H = G\).
+    \end{thm}
+
+    \begin{proof}
+        We first prove that \(H \subseteq G\). Let \(y\in H\) be arbitrary. Then, \(y^{-1} \in G\). This means that \((y^{-1})^{-1} = y \in G\). Hence, \(H \subseteq G\). We now prove that \(G \subseteq H\). Let \(y\in G\) be arbitrary. Then, \(y^{-1} \in G\), so \(y\in H\). Hence, \(G \subseteq H\). Therefore, \(H = G\).
+    \end{proof}
+
+    \newpage
+    \begin{example}[Seatwork]
+        \mbox{}
+
+        \begin{enumerate}
+            \item Show that \(\{5, 15, 25, 35\}\) is a group under multiplication modulo 40.
+
+            We first construct the table:
+
+            \[
+                \begin{array}{c|c|c|c|c|}
+                    * & 5 & 15 & 25 & 35 \\ \hline
+                    5  & 25 & 35 &  5 & 15 \\ \hline
+                    15 & 35 & 25 & 15 &  5 \\ \hline
+                    25 &  5 & 15 & 25 & 35 \\ \hline
+                    35 & 15 & 5 & 35 & 25 \\ \hline
+                \end{array}
+            \]
+
+            \begin{itemize}
+                \item Multiplication of integers in modular arithmetic is closed, hence, \(*\) is closed.
+                \item Associativity also holds since we are dealing with a specific modulus.
+                \item We have an identity element which is 25.
+                \item Each element has an inverse, in this case, the inverse of an element is itself.
+            \end{itemize}
+
+            Hence, \(\{5, 15, 25, 35\}\) is a group under multiplication modulo 40.
+
+            \item For any integer \(n \geq 2\), show that there are at least two elements in \(U_n\) that satisfy \(x^2 = 1\).
+
+            Clearly, \(1\) satisfies the condition since \(1^2 = 1\). Another element satisfying the condition is \(n - 1\), since:
+            \begin{align*}
+                (n - 1)^2 &\equiv (n^2 - 2n + 1) \pmod{n} \\
+                (n - 1)^2 &\equiv 1 \pmod{n}
+            \end{align*}
+
+            Hence, there are at least two elements in \(U_n\) that satisfy \(x^2 = 1\).
+
+            \item Prove that \(G\) is abelian iff \((ab)^{-1} = a^{-1}b^{-1}\) for all \(a, b\in G\).
+
+            Let \(G\) be a group, and let \(a, b\in G\) be arbitrary.
+            \begin{itemize}
+                \item[\((\Rightarrow)\)] Suppose that \(G\) is abelian. Then,
+                \begin{align*}
+                    (ab)^{-1} &= b^{-1}a^{-1}\qquad \text{by inverse of product} \\
+                    (ab)^{-1} &= a^{-1}b^{-1}\qquad \text{since } G\text{ is abelian}
+                \end{align*}
+
+                \item[\((\Leftarrow)\)] Suppose that \((ab)^{-1} = a^{-1}b^{-1}\). Then,
+                \begin{align*}
+                    (ab)^{-1} &= a^{-1}b^{-1} \\
+                    \left((ab)^{-1}\right)^{-1} &= (a^{-1}b^{-1})^{-1} \\
+                    ab &= (b^{-1})^{-1}(a^{-1})^{-1} \\
+                    ab &= ba
+                \end{align*}
+
+                Therefore, \(G\) is abelian iff \((ab)^{-1} = a^{-1}b^{-1}\).
+            \end{itemize}
+
+            \item Prove that for any integer \(n\), \((a^{-1}ba)^{n} = a^{-1}b^n a\) for any elements \(a\) and \(b\) from a group.
+
+            Let \(n\in \int^+\) be arbitrary, and suppose that for all \(i\in\int^+\) less than \(n\), \((a^{-1}ba)^{i} = a^{-1}b^i a\). Then,
+            \begin{align*}
+                (a^{-1}ba)^{n} &= (a^{-1}b a)(a^{-1}b a)^{n - 1} \\
+                (a^{-1}ba)^{n} &= a^{-1}baa^{-1}b^{n - 1} a \\
+                (a^{-1}ba)^{n} &= a^{-1}bb^{n - 1} a \\
+                (a^{-1}ba)^{n} &= a^{-1}b^{n} a
+            \end{align*}
+            Hence, \((a^{-1}ba)^{n} = a^{-1}b^{n} a\). Now, consider the case when \(n\in\int^-\). Let \(k\in\int^+\) such that \(n = -k\). Then,
+            \begin{align*}
+                (a^{-1}ba)^{n} &= (a^{-1}ba)^{-k} \\
+                (a^{-1}ba)^{n} &= \left[(a^{-1}ba)^k\right]^{-1} \\
+                (a^{-1}ba)^{n} &= (a^{-1}b^ka)^{-1} \\
+                (a^{-1}ba)^{n} &= a^{-1}(b^k)^{-1}(a^{-1})^{-1} \\
+                (a^{-1}ba)^{n} &= a^{-1}b^{-k}a \\
+                (a^{-1}ba)^{n} &= a^{-1}b^{n}a
+            \end{align*}
+
+            And when \(n = 0\), we have \((a^{-1}ba)^{0} = e\) and \(a^{-1}b^0a = a^{-1}a = e\). Therefore, \((a^{-1}ba)^{n} = a^{-1}b^n a\) for any elements \(a\) and \(b\) from a group and for any integer \(n\).
+
+            \item Prove that in a group, \((ab)^2 = a^2b^2\) iff \(ab = ba\).
+            \begin{itemize}
+                \item[\((\Rightarrow)\)] Suppose that \((ab^2) = a^2b^2\). Then,
+                \begin{align*}
+                    (ab)^2 &= a^2b^2 \\
+                    (ab)^2 &= aabb \\
+                    (ab)^2 &= abab \\
+                    aabb &= abab \\
+                    ab &= ba
+                \end{align*}
+
+                \item[\((\Leftarrow)\)] Suppose that \(ab = ba\). Then,
+                \begin{align*}
+                    abab &= abba \\
+                    (ab)^2 &= ab^2a \\
+                    (ab)^2 &= aab^2 \\
+                    (ab)^2 &= a^2b^2
+                \end{align*}
+
+            \end{itemize}
+            Therefore, \((ab)^2 = a^2b^2\) iff \(ab = ba\) for all elements \(a, b\) in the group.
+
+            \item Let \(G\) be a group such that \(x^2 = e\) for all \(x\in G\) with \(e\) as the identity in \(G\). Show that \(G\) is abelian.
+
+            Let \(a, b\in G\). Then, \(a^2 = b^2 = e\). Also, \((ab)^2 = e\). Hence, \(abab = a^2b^2\) and by cancellations, we get \(ab = ba\). Therefore, \(G\) is abelian.
+        \end{enumerate}
+    \end{example}
