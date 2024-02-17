@@ -1,0 +1,155 @@
+\renewcommand{\sectionmark}[1]{\markboth{}{Preliminary Exam}}
+\titleformat{\section}{\Large\bfseries}{Preliminary Examination}{1ex}{}
+\refstepcounter{quizcounter}
+\section[Preliminary Examination]{}
+\normalsize\titleformat{\section}{\Large\bfseries}{Lecture~\thesection:}{1ex}{}
+\renewcommand{\sectionmark}[1]{\markboth{}{Lecture \thesection: #1}}
+\renewcommand{\leftmark}{February 14, 2024}
+% Preliminary Examination
+% 02/14/2024
+
+\begin{enumerate}
+    \item[A.] Write the word \underline{TRUE} if the statement is correct, otherwise, write \underline{FALSE} (4 points each)
+    \begin{enumerate}
+        \item[(i)] There is a group with 2 distinct identity elements.
+
+        \underline{FALSE}, since all groups have a unique identity (\hyperref[thm:unique-identity]{Theorem 4.3}).
+
+        \item[(ii)] The empty set can be considered a group.
+
+        \underline{FALSE}, since the second condition from the \hyperref[dfn:group]{definition of a group} cannot be satisfied.
+
+        \item[(iii)] A group with two elements is abelian.
+
+        \underline{TRUE}. Let \(\langle G, * \rangle\) be a group with two elements \(\{e, x\}\). Clearly, \(e * e = e\), \(e * x = x * e = x\). Now, consider \(x * x\). If \(x * x = x\), then \(x = e\) by the \hyperref[thm:cancellation-law]{cancellation law}. This implies that there is only one element which contradicts our assumption that there are two elements. The only element remaining is \(e\), hence \(x * x = e\). 
+
+        Any permutation of the elements under \(*\) doesn't affect the result, hence, it is abelian.
+
+        \item[(iv)]\(\langle \real, *\rangle\) is a group where \(*\) is ordinary multiplication.
+
+        \underline{FALSE}, since the third condition from the \hyperref[dfn:group]{definition of a group} cannot be satisfied. In particular, zero doesn't have an inverse under ordinary multiplication.
+
+        \item[(v)]\(\int_p \backslash \{0\}\) is a group under multiplication modulo \(p\) where \(p\) is prime.
+
+        \underline{TRUE}. The group \(\int_p \backslash \{0\}\) is just \(U_p\), which we know is a group.
+
+        \item[(vi)] \(\langle \rat, +\rangle\) is a group.
+
+        \underline{TRUE}. Trivial.
+
+        \item[(viii)] The inverse of any group element is unique.
+
+        \underline{TRUE}, as proven \hyperref[thm:unique-inverse]{here}.
+
+        \item[(ix)] The set of even integers is a group under ordinary addition.
+
+        \underline{TRUE}. Trivial.
+
+        \item[(x)] The set of odd integers is a group under ordinary addition.
+
+        \underline{FALSE}, since closure isn't satisfied. For any \(x\) in the set of odd integers, \(-x + x = 0\), yet \(0\) is not in the set of odd integers.
+    \end{enumerate}
+
+    \item[B.] (Computation) Provide what is being asked. Show your detailed solution. (10 points each).
+    \begin{enumerate}
+        \item[(a)] Determine the number of relations that can be formed on a set with 12 elements.
+
+        Let \(A\) be such the mentioned set. Then, the question asks the number of relations that can be formed on \(A^2\) will be \(2^{|A|\cdot |B|} - 1\), which will be \(2^{12\cdot 12} - 1 = 2^{144} - 1\) relations.
+
+        \item[(b)] Let \(A\) and \(B\) be sets with \(34\) and \(56\) elements, respectively. How many binary operations can be formed on \(A \times B\)?
+
+        It is trivial that \(|A \times B| = 1904\). By \hyperref[thm:number-of-binary-operation]{Theorem 3.1}, we have \(1904^{1904^2}\) binary operations.
+
+        \item Construct the group table of the following:
+        \begin{enumerate}
+            \item[a.] \(\int_{14}\)
+                \begin{gather*}
+                    \begin{array}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+                        * & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\ \hline
+                        0 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\ \hline
+                        1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 \\ \hline
+                        2 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 \\ \hline
+                        3 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 \\ \hline
+                        4 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 \\ \hline
+                        5 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 \\ \hline
+                        6 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+                        7 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+                        8 & 8 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+                        9 & 9 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+                        10 & 10 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+                        11 & 11 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+                        12 & 12 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\ \hline
+                        13 & 13 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+                    \end{array}
+                \end{gather*}
+            \item[b.] \(U_{36}\)
+                \begin{gather*}
+                    \begin{array}{c|c|c|c|c|c|c|c|c|c|c|c|c|}
+                        * & 1 & 5 & 7 & 11 & 13 & 17 & 19 & 23 & 25 & 29 & 31 & 35 \\ \hline
+                        1 & 1 & 5 & 7 & 11 & 13 & 17 & 19 & 23 & 25 & 29 & 31 & 35 \\ \hline
+                        5 & 5 & 25 & 35 & 19 & 29 & 13 & 23 & 7 & 17 & 1 & 11 & 31 \\ \hline
+                        7 & 7 & 35 & 13 & 5 & 19 & 11 & 25 & 17 & 31 & 23 & 1 & 29 \\ \hline
+                        11 & 11 & 19 & 5 & 13 & 35 & 7 & 29 & 1 & 23 & 31 & 17 & 25 \\ \hline
+                        13 & 13 & 29 & 19 & 35 & 25 & 5 & 31 & 11 & 1 & 17 & 7 & 23 \\ \hline
+                        17 & 17 & 13 & 11 & 7 & 5 & 1 & 35 & 31 & 29 & 25 & 23 & 19 \\ \hline
+                        19 & 19 & 23 & 25 & 29 & 31 & 35 & 1 & 5 & 7 & 11 & 13 & 17 \\ \hline
+                        23 & 23 & 7 & 17 & 1 & 11 & 31 & 5 & 25 & 35 & 19 & 29 & 13 \\ \hline
+                        25 & 25 & 17 & 31 & 23 & 1 & 29 & 7 & 35 & 13 & 5 & 19 & 11 \\ \hline
+                        29 & 29 & 1 & 23 & 31 & 17 & 25 & 11 & 19 & 5 & 13 & 35 & 7 \\ \hline
+                        31 & 31 & 11 & 1 & 17 & 7 & 23 & 13 & 29 & 19 & 35 & 25 & 5 \\ \hline
+                        35 & 35 & 31 & 29 & 25 & 23 & 19 & 17 & 13 & 11 & 7 & 5 & 1 \\ \hline
+                    \end{array}
+                \end{gather*}
+        \end{enumerate}
+    \end{enumerate}
+
+    \item[C.] (Proving) Write your detailed proof. Each problem is worth 15 points.
+
+    \begin{enumerate}
+        \item[(a)] Let \(G\) be an abelian group of order \(n\), and \(a_1, a_2, \ldots, a_n\) its elements. Let \(x = a_1a_2\cdots a_n\). Prove that if \(n\) is odd, then \(x^2 = e\), where \(e\) is the identity in \(G\).
+
+        Note that we don't need \(n\) to be odd, it suffices to prove that \(x^2 = e\) if \(G\) is abelian. Because \(G\) is a group, each element has an inverse. Let \(b_i = a_i^{-1}\) for each \(i = 1, 2, \ldots, n\). We can then write \(x\) as \(b_1 b_2 \cdots b_n\). Then,
+        \begin{align*}
+            x^2 &= (a_1a_2\cdots a_n)(b_1b_2\cdots b_n) \\
+            x^2 &= (a_1 b_1)(a_2 b_2) \cdots (a_n b_n) \\
+            x^2 &= ee \cdots e \\
+            x^2 &= e
+        \end{align*}
+
+        \item[(b)] Let \(G\) be a finite group and let \(g\in G\). Show that there exists a positive integer \(n\) such that \(g^n = e\) where \(e\) is the identity in \(G\).
+
+        Since \(G\) is a finite group and \(|G| < |\int^+|\), then a function \(G \times \int^+ \to G\) cannot be injective. By the pigeonhole principle, there exists \(i, j\in \int^+\) such that \(i \neq j\) and \(g^{i} = g^{j}\). Without loss of generality, let \(i > j\). Then, \(g^{i - j} = e\). Hence, there exists a positive integer \(n\) such that \(g^n = e\).
+
+        \item[(c)] Let \(G\) be a group and let \(a, b\in G\). Prove that the equations \(ax = b\) and \(ya = b\) have unique solutions for \(x\) and \(y\).
+
+        We first consider the first equation, and check for existence:
+        \begin{align*}
+            ax &= b \\
+            a^{-1}ax &= a^{-1}b \\
+            x &= a^{-1}b
+        \end{align*}
+        Since \(G\) is a group, \(a^{-1}\) exists, and so \(a^{-1}b\) also exists. Suppose there exists another solution \(x'\in G\) such that \(ax' = b\). Then,
+        \begin{align*}
+            ax' &= b \\
+            a^{-1}ax' &= a^{-1}b \\
+            x' &= a^{-1}b \\
+            x' &= x
+        \end{align*}
+        Hence, the solution for \(x\) in \(ax = b\) exists, and is unique. Similarly, for the second equation, we also show existence as follows:
+        \begin{align*}
+            ya &= b \\
+            yaa^{-1} &= ba^{-1} \\
+            y &= ba^{-1}
+        \end{align*}
+        The expression \(ba^{-1}\) exists in \(G\), so a solution exists. Suppose that another solution \(y' \in G\) exists. Then,
+        \begin{align*}
+            y'a &= b \\
+            y'aa^{-1} &= ba^{-1} \\
+            y' &= ba^{-1} \\
+            y' &= y
+        \end{align*}
+        Hence, the solution for \(y\) in \(ya = b\) exists and is unique.
+
+        Therefore, the equations \(ax = b\) and \(ya = b\) have unique solutions for \(x\) and \(y\), given any elements \(a\) and \(b\) in a group \(G\).
+    \end{enumerate}
+\end{enumerate}
