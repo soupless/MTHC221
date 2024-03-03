@@ -1,0 +1,108 @@
+\section{Order and subgroups}
+    \renewcommand{\leftmark}{February 19, 2024}
+
+    \begin{dfn}[Order of a group]
+        Let \(G\) be a group. The number of elements in \(G\), denoted by \(|G|\), is called the order of \(G\).
+    \end{dfn}
+
+    \begin{example}
+        \begin{align*}
+            |\int_{10}| &= 10 \\
+            |U_5| &= |\{1, 2, 3, 4\}| = 4 \\
+            |\int| &= \infty \\
+            |\int_n| &= n \\
+            |U_n| &= \phi(n)
+        \end{align*}
+    \end{example}
+
+    \begin{dfn}[Order of a group element]
+        Let \(G\) be a group and let \(g\in G\). The order of \(g\), denoted by \(|g|\), is the smallest positive integer \(k\) such that \(g^k = e\), where \(e\) is the identity in \(G\). If no such \(k\) exists, we say that \(|g|\) is infinite.
+    \end{dfn}
+
+    \begin{example}
+
+        \mbox{}
+
+        \begin{enumerate}
+            \item \(G\) is a group, and \(e\) is the identity in \(G\). Hence, \(|e| = 1\), since \(e^1 = e\).
+
+            \item \(U_9 = \{1, 2, 4, 5, 7, 8\}\). We have \(\phi(9) = 6\), so \(|U_9| = 6\).
+        \end{enumerate}
+    \end{example}
+
+    \begin{example}
+        Determine the order of each element in \(U_9\).
+    \end{example}
+
+    \begin{thm}
+        If \(g\in G\) where \(G\) is a group, and if \(g^k = e\), and \(k\in \int^+\), then \(|g| \leq k\).
+    \end{thm}
+
+    \begin{proof}
+        We check the cases of the relationship between \(|g|\) and \(k\):
+        \begin{enumerate}
+            \item[Case 1:] \(|g| < k\).
+
+            Assume that \(|g| = j < k\). Then, \(|g| \leq k\). 
+
+            \item[Case 2:] \(|g| = k\). 
+
+            Then, \(|g| \leq k\). 
+
+            \item[Case 3:] \(|g| > k\).
+
+            This is a contradiction, since we already have \(g^k = e\). 
+        \end{enumerate}
+    \end{proof}
+
+    \begin{dfn}[Subgroup]
+        Let \(H \subseteq G\), and \(H \neq \emptyset\), and \(G\) be a group. \(H\) is called a subgroup of \(G\), denoted \(H \leq G\), if \(H\) itself is a group under the binary operation in \(G\).
+    \end{dfn}
+
+    \begin{example}
+        Consider \(\int_{12}\), and let \(H_1 = \{0, 2, 4, 6, 8, 10\}\), \(H_2 = \{0, 3, 6, 9\}\), \(H_3 = \{0, 4, 8\}\), \(H_4 = \{0, 6\}\), and \(H_5 = \{0\}\).
+
+        All sets \(H_i\) can be proved to be subgroups of \(\int_{12}\).
+    \end{example}
+
+    \begin{thm}[Two-Step Subgroup Test]
+        Let \(G\) be a group and let \(H\) be a non-empty subset of \(G\). If \(ab\in H\) whenever \(a,b\in H\) and \(a^{-1}\in H\) whenever \(a\in H\), then \(H \leq G\).
+    \end{thm}
+
+    \begin{proof}
+        Suppose that \(H\) is a non-empty subset of \(G\) where \(H\) is closed under the binary operation of \(G\), and \(H\) is closed under taking inverses. Then, by hypothesis, closure and inverse conditions are already proved. Associativity of the binary operation of \(G\) is inherited by \(H\), since it is a subset. To prove that an identity element exists, we know that for any element \(h\in H\), \(h^{-1}\in H\). Since the operation is closed in \(H\), \(hh^{-1} = e\in H\).
+
+        Hence, \(H\) is a group. Since \(H\) is a subset of \(G\), this means that \(H\) is a subgroup of \(G\).
+    \end{proof}
+
+    \begin{example}
+        Let \(G\) be an abelian group, and let \(H = \big\{x \,\big|\, x\in G\land |x|\text{\small{} is finite}\big\}\).
+
+        We first prove that \(H \neq \emptyset\). Since \(G\) is a group, this means that \(G\) has an identity element. We let \(e\) to be this identity element. Since \(|e| = 1\), then  \(e\in H\), and so \(H \neq \emptyset\).
+
+        We now show that \(H\) is closed. Let \(a, b\in H\) be arbitrary. This means that \(|a|\) and \(|b|\) are finite. Let \(|a| = k\) and let \(|b| = j\). Consider \((ab)^{jk}\). Then, \((ab)^{jk} = a^{jk}b^{jk} = (a^k)^j (b^j)^k = e^j e^k = e\). Hence, \((ab)^{jk} = e\) means that the order of \(ab\) is at most \(jk\), and is finite. 
+
+        To prove that \(H\) is closed under taking inverses, let \(h\in H\) be arbitrary. This means that \(|h|\) is finite. Let \(|h| = k\). Then,
+        \begin{align*}
+            h^k &= e \\
+            (h^k)^{-1} &= e^{-1} \\
+            (h^{-1})^{k} &= e \\
+            |h^{-1}| &\leq k \\
+            |h^{-1}| &\text{ is finite.} \\
+            |h^{-1}| &\in H.
+        \end{align*}
+
+        By the two-step subgroup test, \(H \leq G\).
+    \end{example}
+
+    \begin{thm}[One-step subgroup test]
+        Let \(G\) be a group and \(H\) be a nonempty subset of \(G\). If, for any \(a,b\in H\), \(ab^{-1}\in H\), then \(H \leq G\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(H \neq \emptyset\) and \(H \subseteq G\) where \(G\) is a group. Suppose that for any two elements \(a, b\in H\), \(ab^{-1}\in H\). First, we show that \(e\in H\) where \(e\) is the identity in \(G\). Since \(H\) is nonempty, this implies the existence of some element in \(H\), let \(a\) be such an element. Then, \(aa^{-1} = e \in H\). Hence, the identity element exists in \(H\).
+
+        Let \(a,b\in H\) be arbitrary. Since \(e\in H\), then \(eb^{-1} = b^{-1}\in H\). Hence, \(H\) is closed upon taking inverses. Now, \(a(b^{-1})^{-1} = ab\in H\). Hence, \(H\) is closed.
+
+        By the two-step subgroup test, \(H \leq G\).
+    \end{proof}
