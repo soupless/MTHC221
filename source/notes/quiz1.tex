@@ -1,9 +1,10 @@
 % Mess I made because I don't know moving arguments
 
+\refstepcounter{quizcounter}
 \renewcommand{\sectionmark}[1]{\markboth{}{Quiz \thequizcounter}}
 \titleformat{\section}{\Large\bfseries}{Quiz~\thequizcounter}{1ex}{}
-\refstepcounter{quizcounter}
 \section[Quiz \thequizcounter]{}\normalsize\titleformat{\section}{\Large\bfseries}{Lecture~\thesection:}{1ex}{}
+\addtocounter{section}{-1}
 \renewcommand{\sectionmark}[1]{\markboth{}{Lecture \thesection: #1}}
 \vspace{-0.2in}
 \renewcommand{\leftmark}{February 05, 2024}
