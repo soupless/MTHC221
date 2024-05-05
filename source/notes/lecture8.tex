@@ -1,0 +1,137 @@
+\section{Sample problems on order}
+    \renewcommand{\leftmark}{February 28, 2024}
+
+    \begin{enumerate}
+        \item Let \(G\) be a group, and let \(a, b\in G\) be arbitrary. Show that:
+        \begin{enumerate}
+            \item[(i)] \(|a| = |a^{-1}|\)
+
+            We consider two cases, one where \(a\) is of infinite order and one where it is of finite order.
+            \begin{itemize}
+                \item \(|a|\) is infinite. 
+
+                Suppose \(|a^{-1}|\) is finite. Let \(k = |a^{-1}|\). Then,
+                \begin{align*}
+                    (a^{-1})^k &= e \\
+                    a^{-k} &= e \\
+                    a^k a^{-k} &= a^k \\
+                    e &= a^k \\
+                    |a| &\leq k
+                \end{align*}
+                which contradicts our assumption that \(|a|\) is infinite. Hence, \(|a| = |a^{-1}|\).
+
+                \item \(|a|\) is finite.
+
+                Let \(|a| = k\). Then,
+                \begin{align*}
+                    a^k &= e \\
+                    (a^k)^{-1} &= e^{-1} \\
+                    a^{-k} &= e \\
+                    (a^{-1})^k &= e \\
+                    |a^{-1}| &\leq k
+                \end{align*}
+                Suppose \(|a^{-1}| < k\). Let \(|a^{-1}| = m\). Then,
+                \begin{align*}
+                    (a^{-1})^m &= e \\
+                    a^{-m} &= e \\
+                    (a^{m})^{-1} &= e \\
+                    ((a^{m})^{-1})^{-1} &= e^{-1} \\
+                    a^{m} &= e \\
+                    |a| &\leq m \\
+                    k &\leq m
+                \end{align*}
+                This contradicts the statement we obtained that \(m < k\). Hence, \(|a^{-1}| = k\), so \(|a| = |a^{-1}|\).
+            \end{itemize}
+
+            \item[(ii)] \(|a| = |bab^{-1}|\)
+
+            A similar proof from the previous item will be used. Suppose that \(|a|\) is infinite. If \(|bab^{-1}|\) is finite, say \(k\), then
+            \begin{align*}
+                (bab^{-1})^k &= e \\
+                ba^kb^{-1} &= e \\
+                b^{-1}ba^kb^{-1}b &= b^{-1}eb \\
+                a^k &= e \\ 
+                |a| &\leq k
+            \end{align*}
+            which contradicts our assumption that \(|a|\) is infinite. Hence, \(|a| = |bab^{-1}|\). Now, suppose that \(|a|\) is finite, say \(k\). Then,
+            \begin{align*}
+                (bab^{-1})^k &= ba^kb^{-1} \\
+                (bab^{-1})^k &= beb^{-1} \\
+                (bab^{-1})^k &= bb^{-1} \\
+                (bab^{-1})^k &= e \\
+                |bab^{-1}| &\leq k
+            \end{align*}
+            Suppose \(|bab^{-1}| < k\), say \(m\). Then,
+            \begin{align*}
+                (bab^{-1})^m &= e \\
+                ba^mb^{-1} &= e \\
+                b^{-1}ba^mb^{-1}b &= b^{-1}eb \\
+                a^m &= b^{-1}b \\
+                a^m &= e \\
+                |a| &\leq m \\
+                k &\leq m
+            \end{align*}
+            which contradicts our obtained statement \(m < k\). Hence, \(|bab^{-1}| = k\), so \(|a| = |bab^{-1}|\).
+        \end{enumerate}
+
+        \item Prove that if \(a\) and \(b\) are group elements of the same group such that \(ab \neq ba\), then \(aba \neq e\).
+
+        Let \(a, b\) be arbitrary elements of a group. Suppose that \(aba = e\) where \(e\) is the identity element. Then,
+        \begin{align*}
+            abaa^{-1} &= ea^{-1} & a^{-1}aba &= a^{-1}e \\
+            ab &= a^{-1} & ba &= a^{-1}
+        \end{align*}
+        And by transitivity, \(ab = ba\). This contradicts our assumption that \(ab \neq ba\). Hence, \(aba \neq a\).
+
+        \item Let \(G\) be a group, and let \(x \in G\) be arbitrary such that \(|x| = 7\). Show that \(x\) is a cube of some element in \(G\).
+
+        Since \(|x| = 7\), 
+        \begin{align*}
+            x^7 &= e \\
+            (x^7)^2 &= e^2 \\
+            x^{14} &= e \\
+            x^{14}x &= ex \\
+            x^{15} &= x \\
+            (x^5)^3 &= x
+        \end{align*}
+        Since \(x^5 \in G\), we can let \(g = x^5\). Then, \(g^3 = x\) for some \(g\) in \(G\). Hence, \(x\) is a cube of some element in \(G\).
+
+        \item Let \(G\) be a group, and let \(g\in G\) be arbitrary. Prove that \(C(g) = C(g^{-1})\).
+
+        Let \(x \in C(g)\) be arbitrary. Then,
+        \begin{align*}
+            gx &= xg \\
+            g^{-1}gxg^{-1} &= g^{-1}xgg^{-1} \\
+            xg^{-1} &= g^{-1}x
+        \end{align*}
+        which implies that \(x \in C(g^{-1})\). This means \(C(g) \subseteq C(g^{-1})\). Now, let \(x\in C(g^{-1})\) be arbitrary. Then,
+        \begin{align*}
+            g^{-1}x &= xg^{-1} \\
+            gg^{-1}xg &= gxg^{-1}g \\
+            xg &= gx
+        \end{align*}
+        which implies \(x\in C(g)\), so \(C(g^{-1}) \subseteq C(g)\). Therefore, \(C(g) = C(g^{-1})\).
+
+        \item Let \(G\) be a group. Prove that \(\displaystyle Z(G) =  \bigcap\limits_{g \in G}C(g)\).
+
+        Let \(x \in Z(G)\) be arbitrary. Then, \(\forall g\in G (xg = gx)\). Let \(g\in G\) be arbitrary. Then \(xg = gx\), which implies \(x\in C(g)\). Since \(g\) is arbitrary, it must be that \(x\in\bigcap\limits_{g\in G}C(g)\), so \(Z(G) \subseteq \bigcap\limits_{g\in G}C(g)\). Now, let \(x\in \bigcap\limits_{g\in G}C(g)\) be arbitrary. By definition of set intersection, this is equivalent to \(\forall g\in G (x\in C(g))\). Let \(g\in G\) be arbitrary. Then, \(x\in C(g)\), which implies \(xg = gx\). This means \(\forall g\in G (xg = gx)\), and by definition of center, \(x\in Z(G)\). Hence, \(\bigcap\limits_{g\in G}C(g) \subseteq Z(G)\). Therefore, \(Z(G) = \bigcap\limits_{g\in G}C(g)\).
+
+        \item Let \(G\) be a group, and let \(g\in G\) such that \(|g| = n\). Prove that if \(d > 0\) and \(d \divs n\), then \(|g^d| = n/d\).
+
+        Since \(d | n\), this means \(n = dk\) for some integer \(k\). By manipulating this equality, we get \(k = n/d\). Then,
+        \begin{align*}
+            g^n &= e \\
+            g^{dk} &= e \\
+            (g^d)^k &= e \\
+            |g^d| &\leq k \\
+            |g^d| &\leq \frac{n}{d}.
+        \end{align*}
+
+        If \(|g^d| < n/d\), say \(i\), then
+        \begin{align*}
+            (g^d)^i &= e \\
+            g^{di} &= e \\
+            |g| &\leq di
+        \end{align*}
+        Since \(i < k\), then \(di < dk = n\), so \(|g| \leq di < n\) which gives us \(n < n\), a contradiction. Hence, \(|g^d| = n/d\).
+    \end{enumerate}
