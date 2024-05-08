@@ -1,8 +1,8 @@
 % Mess I made because I don't know moving arguments
 
 \renewcommand{\sectionmark}[1]{\markboth{}{Quiz \thequizcounter}}
-\titleformat{\section}{\Large\bfseries}{Quiz~\thequizcounter}{1ex}{}
-\section[Quiz \thequizcounter]{}\normalsize\titleformat{\section}{\Large\bfseries}{Lecture~\thesection:}{1ex}{}
+\titleformat{\section}{\Large\bfseries}{\phantomsection Quiz~\thequizcounter}{1ex}{}
+\section[Quiz \thequizcounter]{}\normalsize\titleformat{\section}{\Large\bfseries}{\phantomsection Lecture~\thesection:}{1ex}{}
 \addtocounter{section}{-1}
 \renewcommand{\sectionmark}[1]{\markboth{}{Lecture \thesection: #1}}
 % \vspace{-0.2in}
