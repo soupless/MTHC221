@@ -1,0 +1,204 @@
+\section{Properties of homomorphisms, and isomorphisms}
+    \renewcommand{\leftmark}{May 13, 2024}
+
+    \begin{thm}
+        Let \(\phi : G \to G'\) be a group homomorphism, and \(g\in G\). Then, 
+        \begin{enumerate}
+            \item \(\phi(e) = e'\) where \(e\) and \(e'\) are the identity elements of \(G\) and \(G'\), respectively,
+            \item \(\phi(g^n) = \phi(g)^n\) for all integers \(n\),
+            \item If \(|g|\) is finite, then \(|\phi(g)|\) divides \(|g|\),
+            \item \(\ker \phi \leq G\),
+            \item \(\phi(a) = \phi(b)\) iff \(a\ker\phi = b\ker\phi\),
+            \item If \(\phi(g) = g'\), then \(\phi^{-1}(g') = g\ker\phi\) where \(\phi^{-1}(g') = \{x\in G\,\mid\, \phi(x) = g'\}\).
+        \end{enumerate}
+    \end{thm}
+
+    \begin{proof}
+        We prove each item as follows:
+        \begin{enumerate}
+            \item Let \(g\in G\) be arbitrary. We consider \(\phi(ge)\) as follows:
+            \begin{align*}
+                \phi(ge) &= \phi(g) \\
+                \phi(g)\phi(e) &= \phi(g) \\
+                \left(\phi(g)\right)^{-1}\phi(g)\phi(e) &= \left(\phi(g)\right)^{-1}\phi(g) \\
+                \phi(e) &= e'.
+            \end{align*}
+
+            \item We first prove that \(\phi(g^{-1}) = \phi(g)^{-1}\). We consider \(\phi(gg^{-1})\) as follows:
+            \begin{align*}
+                \phi(gg^{-1}) &= \phi(e) \\
+                \phi(g)\phi(g^{-1}) &= e' \\
+                \left(\phi(g)\right)^{-1}\phi(g)\phi(g^{-1}) &= \phi(g)^{-1} \\
+                \phi(g^{-1}) &= \phi(g)^{-1}
+            \end{align*}
+
+            There are two cases for \(n\), and the first one is if \(n \geq 0\). Then,
+            \begin{align*}
+                \phi(g^n) &= \phi(\underbrace{g\cdot g \cdots g}_{n \text{ times}}) \\
+                \phi(g^n) &= \underbrace{\phi(g) \cdot \phi(g) \cdots \phi(g)}_{n \text{ times}} \\
+                \phi(g^n) &= \phi(g)^n
+            \end{align*}
+            And if \(n < 0\), then
+            \begin{align*}
+                \phi(g^n) &= \phi(g^{-|n|}) \\
+                \phi(g^n) &= \phi((g^{-1})^{|n|}) \\
+                \phi(g^n) &= \phi(g^{-1})^{|n|} \\
+                \phi(g^n) &= (\phi(g)^{-1})^{|n|} \\
+                \phi(g^n) &= \phi(g)^{-|n|} \\
+                \phi(g^n) &= \phi(g)^{n}
+            \end{align*}
+
+            \item Let \(|g| = n\). Then, \(g^n = e\). It follows that
+            \begin{align*}
+                \phi(g^n) &= \phi(e) \\
+                \phi(g)^n &= e'
+            \end{align*}
+            Hence, \(|\phi(g)|\) divides \(n\), so \(|\phi(g)|\) divides \(|g|\).
+
+            \item Let \(a,b\in \ker\phi\). Then,
+            \begin{align*}
+                \phi(ab^{-1}) &= \phi(a)\phi(b^{-1}) \\
+                \phi(ab^{-1}) &= e'e' \\
+                \phi(ab^{-1}) &= e'
+            \end{align*}
+            Hence, \(ab^{-1}\in\ker\phi\). By the one-step subgroup test, \(\ker\phi \leq G\).
+
+            \item Suppose \(\phi(a) = \phi(b)\). Then,
+            \begin{align*}
+                \phi(a) &= \phi(b) \\
+                \phi(b)^{-1}\phi(a) &= \phi(b)^{-1}\phi(b) \\
+                \phi(b^{-1})\phi(a) &= e' \\
+                \phi(b^{-1a}) &= e' \\
+                b^{-1}a &\in \ker\phi \\
+                b^{-1}a \ker\phi &= \ker\phi \\
+                bb^{-1}a \ker\phi &= b\ker\phi \\
+                a \ker\phi &= b\ker\phi
+            \end{align*}
+            The backward direction can be proven by simply doing the proof of the forward direction in reverse.
+
+            \item Suppose \(\phi(g) = g'\). Let \(y\in \phi^{-1}(g')\) be arbitrary. Then,
+            \begin{align*}
+                y &\in \phi^{-1}(g') \\
+                \phi(y) &= g' \\
+                \phi(y) &= \phi(g) \\
+                \phi(g)^{-1}\phi(y) &= e' \\
+                \phi(g^{-1})\phi(y) &= e' \\
+                \phi(g^{-1}y) &= e' \\
+                g^{-1}y &\in \ker\phi \\
+                g^{-1}y \ker\phi &= \ker\phi \\
+                y \ker\phi &= g\ker\phi
+            \end{align*}
+            Since \(y\in y\ker\phi\), this implies \(y\in g\ker\phi\). Hence, \(\phi^{-1}(g') \subseteq g\ker\phi\).
+
+            Now, let \(z\in g\ker\phi\) be arbitrary. Then,
+            \begin{align*}
+                z &= ga \qquad (\exists a\in\ker\phi) \\
+                \phi(z) &= \phi(ga) \\
+                \phi(z) &= \phi(g)\phi(a) \\
+                \phi(z) &= g'e' \\
+                \phi(z) &= g'
+            \end{align*}
+            which means \(z\in \phi^{-1}(g')\). Hence, \(g\ker\phi \in \phi^{-1}(g')\), and so \(\phi^{-1}(g') = g\ker\phi\).
+        \end{enumerate}
+    \end{proof}
+
+    The last item gives us information about which elements also map to \(g'\), provided we know at least one element \(g\in G\).
+
+    \begin{note}
+        Given a homomorphism \(\phi : G \to G'\) and \(H \leq G\), we define \(\phi(H)\) as \(\{\phi(h) \,\mid\, h\in H\}\).
+    \end{note}
+
+    \begin{thm}
+        Let \(\phi : G \to G'\) be a group homomorphism and let \(H \leq G\). Then,
+        \begin{enumerate}
+            \item \(\phi(H) \leq G'\).
+            \item If \(H\) is cyclic, then \(\phi(H)\) is cyclic.
+            \item If \(H\) is abelian, then \(\phi(H)\) is abelian.
+            \item If \(H\) is normal, then \(\phi(H)\) is normal.
+            \item If \(|\ker\phi| = n\), then \(\phi\) is an \(n\)-to-1 mapping from \(G\) onto \(\phi(G)\).
+            \item If \(|H| = n\), then \(|\phi(H)|\) divides \(n\).
+        \end{enumerate}
+    \end{thm}
+
+    \begin{proof}
+        \mbox{}
+
+        \begin{enumerate}
+            \item Checking that \(\phi(H)\) is nonempty is trivial, since the identity element of \(H\) is mapped onto \(\phi(H)\). Let \(h_1, h_2 \in H\). Then,
+            \begin{align*}
+                \phi(h_1)\phi(h_2)^{-1} &= \phi(h_1)\phi(h_2^{-1}) \\
+                \phi(h_1)\phi(h_2)^{-1} &= \phi(h_1h_2^{-1})
+            \end{align*}
+            Since \(h_1h_2^{-1} \in H\), then \(\phi(h_1h_2^{-1} \in \phi(H))\). By the one-step subgroup test, \(\phi(H) \leq G\).
+
+            \item Suppose \(H\) is cyclic. Then, there is an element \(a\in H\) such that \(H = \langle a \rangle\). We claim that \(\phi(a)\) generates \(\phi(H)\). Let \(h\in H\) such that \(\phi(h) \in \phi(H)\). Since \(H\) is cyclic, we can find an integer \(k\) such that \(h = a^k\). Then,
+            \begin{align*}
+                h &= a^k \\
+                \phi(h) &= \phi(a^k) \\
+                \phi(h) &= \phi(a)^k \\
+                \phi(H) &\leq \langle \phi(a)\rangle.
+            \end{align*}
+            Clearly, \(\langle \phi(a)\rangle \leq \phi(H)\). Hence, \(\phi(H) = \langle \phi(a)\rangle\), so \(\phi(H)\) is cyclic.
+
+            \item Suppose \(H\) is abelian. Let \(h_1, h_2\in H\). Then,
+            \begin{align*}
+                \phi(h_1)\phi(h_2) &= \phi(h_1h_2) \\
+                \phi(h_1)\phi(h_2) &= \phi(h_2h_1) \\
+                \phi(h_1)\phi(h_2) &= \phi(h_2)\phi(h_1)
+            \end{align*}
+            Hence, \(\phi(H)\) is abelian.
+
+            \item Suppose \(H\) is normal in \(G\). Let \(h\in H\), \(g\in G\). We consider \(\phi(g)\phi(h)\phi(g)^{-1}\):
+            \begin{align*}
+                \phi(g)\phi(h)\phi(g)^{-1} &= \phi(g)\phi(h)\phi(g^{-1}) \\
+                \phi(g)\phi(h)\phi(g)^{-1} &= \phi(ghg^{-1})
+            \end{align*}
+            Since \(H\) is normal, there is an \(h_1\in H\) such that \(h_1 = ghg^{-1}\). Then,
+            \begin{align*}
+                \phi(g)\phi(h)\phi(g)^{-1} &= \phi(h_1) \\
+                \phi(g)\phi(h)\phi(g)^{-1} &\in \phi(H)
+            \end{align*}
+            Therefore, \(\phi(H)\) is normal in \(\phi(G)\).
+
+            \item If \(\phi(g) = g'\), then \(\phi^{-1}(g') = g\ker\phi\). Since \(|g\ker\phi| = |\ker\phi| = n\), then there are \(n\) elements mapped to \(g'\) where \(g' \in \phi(G)\).
+
+            \item Trivial.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{thm}
+        Let \(\phi : G \to G'\) be a homomorphism of groups. Then, \(\ker\phi \normalsubeq G\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(g\in G\) and \(x \in \ker\phi\). Consider \(gxg^{-1}\):
+        \begin{align*}
+            \phi(gxg^{-1}) &= \phi(g)\phi(x)\phi(g^{-1}) \\
+            \phi(gxg^{-1}) &= \phi(g)e'\phi(g)^{-1} \\
+            \phi(gxg^{-1}) &= \phi(g)\phi(g)^{-1} \\
+            \phi(gxg^{-1}) &= e'
+        \end{align*}
+        Hence, \(gxg^{-1} \in \ker\phi\), so \(\ker\phi \normalsubeq G\).
+    \end{proof}
+
+    \begin{dfn}[Isomorphism]
+        Let \(\phi : G \to G'\) be a homomorphism of groups. If \(\phi\) is bijective, then \(\phi\) is called an isomorphism.
+    \end{dfn}
+
+    \begin{example}
+        Let \(G\) be an abelian group. Let \(\theta : G \to G\) where \(\theta(g) = g^{-1}\). Then,
+        \begin{align*}
+            \theta(g_1g_2) &= (g_1g_2)^{-1} \\
+            \theta(g_1g_2) &= g_2^{-1}g_1^{-1} \\
+            \theta(g_1g_2) &= g_1^{-1}g_2^{-1} \\
+            \theta(g_1g_2) &= \theta(g_1)\theta(g_2)
+        \end{align*}
+        So \(\theta\) is a homomorphism. We can see that \(\theta\) is injective since
+        \begin{align*}
+            \theta(g_1) &= \theta(g_2) \\
+            g_1^{-1} &= g_2^{-1} \\
+            (g_1^{-1})^{-1} &= (g_2^{-1})^{-1} \\
+            g_1 &= g_2
+        \end{align*}
+        And it is also surjective. Choose any \(g\in G\). We can find an element in \(G\) that \(\theta\) maps to \(g\), and this is \(g^{-1}\): \(\theta(g^{-1}) = (g^{-1})^{-1} = g\).
+    \end{example}

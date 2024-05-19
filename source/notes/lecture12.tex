@@ -1,0 +1,80 @@
+\section{Cycle form of permutations}
+    \renewcommand{\leftmark}{April 15, 2024}
+
+    \begin{dfn}
+        Let \(S\) be a nonempty finite set. Let \(\sigma = (a_1, a_2, \ldots, a_k)\) be a permutation of \(S\). We call \(\sigma\) a \(k\)-cycle of length \(k\).
+    \end{dfn}
+
+    For example, in \(\sigma = (1, 2, 3)\), \(\sigma(1) = 1\), \(\sigma^2(1) = 3\), and \(\sigma^3(1) = 1\).
+
+    \begin{note}
+        Cycles are said to be equal if they can be rewritten as another cycle by moving the first \(i\) elements to the last element.
+    \end{note}
+
+    \begin{thm}
+        Let \(\sigma\) be a \(k\)-cycle. Then, \(|\sigma| = k\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(\sigma = (a_1, a_2, \ldots, a_k)\). From the remark, \(\sigma^j(a_1) = a_{j + 1}\) for \(1 \leq j < k\). Then, \(\sigma^j(a_1) \neq a_1\). But \(\sigma^k (a_i) = a_i\) for all \(1 \leq i \leq k\). Hence, \(\sigma^k = \epsilon\), so \(|\sigma| = k\).
+    \end{proof}
+
+    \begin{dfn}
+        A 2-cycle is called a transposition.
+    \end{dfn}
+
+    \begin{thm}
+        The inverse of a 2-cycle is itself.
+    \end{thm}
+
+    \begin{thm}
+        Every permutation of a finite set can be written as a cycle or as a product of disjoint cycles.
+    \end{thm}
+ 
+    \begin{proof}
+        Let \(\sigma\) be a permutation of a set \(S = \{1, 2, \ldots, n\}\). The first subcycle would be \[(a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{k_1}(a_1)).\] The next subcycle would take elements from \(S\, \backslash\, \{a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{k_1}(a_1)\}\). It is evident that the cardinality of \(S\) decreased. By repeatedly constructing subcycles from this new set and removing the used elements, it is guaranteed that \(S\) is exhausted. Since we removed the elements the previous cycle used, the next subcycle to be written will be disjoint from the previous one. The permutation is then, the product of all the subcycles we formed.
+    \end{proof}
+
+    \begin{thm}
+        If the pair of cycles \(\alpha = (a_1, a_2, \ldots, a_m)\) and \(\beta = (b_1, b_2, \ldots, b_n)\) have no entries in common, then \(\alpha\beta = \beta\alpha\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(\alpha, \beta\) be permutations of \(S = \{1, 2, \ldots, n\}\) where \(\alpha = (a_1, a_2, \ldots, a_m)\) and \(\beta = (b_1, b_2, \ldots, b_n)\), and \(\alpha\) and \(\beta\) have no entries in common. Let \(A = \{a_1, a_2, \ldots, a_m\}\) and \(B = \{b_1, b_2, \ldots, b_n\}\).
+
+        There are three cases where \(x\in S\) belongs in a subset. Either it is in \(A\), \(B\), or neither. For the first case, this implies that \(x\not\in B\). Hence,
+        \begin{align*}
+            \alpha\beta(x) &= \alpha(\beta(x)) & \beta\alpha(x) &= \beta(\alpha(x)) \\
+            \alpha\beta(x) &= \alpha(x) & \beta\alpha(x) &= \alpha(x)
+        \end{align*}
+        which we can conclude that \(\alpha\beta(x) = \beta\alpha(x)\). For the second case where \(x\in B\), it is clear that \(x\not\in A\). Then,
+        \begin{align*}
+            \alpha\beta(x) &= \alpha(\beta(x)) & \beta\alpha(x) &= \beta(\alpha(x)) \\
+            \alpha\beta(x) &= \beta(x) & \beta\alpha(x) &= \beta(x)
+        \end{align*}
+        to which we derive the same conclusion. For the last case, since \(x\) is neither in \(A\) nor in \(B\), then \(\alpha\beta(x) = x = \beta\alpha(x)\). Therefore, \(\alpha\beta = \beta\alpha\) if \(\alpha\) and \(\beta\) have no entries in common.
+    \end{proof}
+
+    \begin{thm}[Order of a Permutation]
+        \marker{thm:ruffini-order}
+        The order of a permutation of a finite set written in disjoint cycle form is the least common multiple of the lengths of the cycles.
+    \end{thm}
+
+    \begin{proof}
+        Let \(\sigma\) be a permutation of a finite set \(S\). Set \(\sigma = \alpha_1 \alpha_2 \ldots \alpha_n\) where \(\sigma\) is a product of disjoint cycles. Define \(|\alpha_i| = m_i\) for \(i = 1, 2, \ldots, n\). Suppose \(|\sigma| = r\). Then, \(\sigma^r = \id\) and
+        \begin{align*}
+            \sigma^r &= \alpha_1^r \alpha_2^r \cdots \alpha_n^r \\ 
+            \alpha_i^r &= \id \\
+            |\alpha_i| &\;\,\big|\; r \\
+            m_i &\;\,\big|\; r
+        \end{align*}
+        This means \(m_1 \,|\,r, m_2 \,|\,r, \ldots, m_n \,|\,r\). Since \(r\) is the order, it must be the smallest integer such that \(\sigma^r = \id\). The divisibility constraints is the definition of the least common multiple, so \(r = \lcm(m_1, m_2, \ldots, m_n)\)
+    \end{proof}
+
+    \begin{dfn}[Permutation parity]
+        A permutation is even if it can be written as a product of even number of 2-cycles.
+    \end{dfn}
+
+    \begin{thm}
+        A \(k\)-cycle is even iff \(k\) is odd.
+    \end{thm}

@@ -1,0 +1,161 @@
+\section{Cosets}
+    \renewcommand{\leftmark}{May 06, 2024}
+
+    \begin{dfn}[Coset]
+        Let \(G\) be a group, let \(H\) be a subgroup, and let \(g\in G\). Then we define the left coset of \(H\), denoted by \(gH\), as \[gH = \{gh \,\mid\, h\in H\}\] and the right coset of \(H\), denoted by \(Hg\), as \[Hg = \{hg\,\mid\, h\in H\}.\] We call \(g\) as the coset representative.
+    \end{dfn}
+
+    \begin{note}
+        If \(G\) is abelian, then the left and right cosets of a subgroup coincide.
+    \end{note}
+
+    \begin{thm}
+        \marker{thm:coset-property}
+        Let \(H \leq G\), \(a,b\in G\). Then,
+        \begin{enumerate}
+            \item \(a\in aH\) and \(a\in Ha\).
+            \item \(aH = H\) iff \(a \in H\).
+            \item \((ab)H = a(bH)\) and \(H(ab) = (Ha)b\).
+            \item \(aH = bH\) iff \(a\in bH\).
+            \item \(aH = bH\) or \(aH \cap bH = \emptyset\).
+            \item \(aH = bH\) iff \(a^{-1}b \in H\).
+            \item \(|aH| = |bH|\).
+            \item \(aH = Ha\) iff \(H = aHa^{-1}\).
+        \end{enumerate}
+    \end{thm}
+
+    \begin{proof}
+        We prove each of the following statements provided the given statements:
+        \begin{enumerate}
+            \item Since \(e \in H\), then \(ae \in aH\). Since \(a = ae\), this means \(a\in aH\). Similarly, \(ea\in Ha\), and since \(a = ea\), this implies \(a \in Ha\).
+
+            \item For the forward direction, suppose \(aH = H\). Let \(h\in H\). Then, \(ah \in aH\), which implies \(ah \in H\). This means that there is an element \(h'\in H\) such that \(ah = h'\). Since both \(h\) and \(h'\) are in \(H\), then \(h'h^{-1}\) is also in \(H\). We then have \(ahh^{-1} = h'h^{-1}\) which simplifies to \(a = h'h^{-1}\), and so \(a\in H\).
+
+            For the backward direction, suppose \(a\in H\). Let \(h\in H\) be arbitrary. Then, \(ah \in aH\) by the definition of a left coset. Also, \(ah \in H\) by closure. Hence, \(ah \in H \implies ah\in aH\), and \(ah\in aH \implies ah\in H\), so \(aH \subseteq H\) and \(H \subseteq aH\). Therefore, \(aH = H\).
+
+            \item Using the definition,
+            \begin{align*}
+                (ab)H &= \{(ab)h \,\mid\, h\in H\} \\
+                (ab)H &= \{a(bh) \,\mid\, h\in H\} \\
+                (ab)H &= a(bH).
+            \end{align*}
+
+            A similar proof can be written for the right coset.
+
+            \item For the forward direction, suppose \(aH = bH\). Let \(h\in H\) be arbitrary. Then,
+            \begin{align*}
+                ah\in aH &\implies ah\in bH \\
+                ah\in aH &\implies ah = bh' \qquad (\exists h'\in H) \\
+                ah\in aH &\implies \phantom{h}a = bh'h^{-1}
+            \end{align*}
+            And since \(h'h^{-1} \in H\), then \(bh'h^{-1} \in bH\). Hence, \(a \in bH\).
+
+            And for the backward direction, suppose \(a\in bH\). Then, \(a = bh\) for some \(h\in H\), and so
+            \begin{align*}
+                aH &= (bh)H \\
+                aH &= b(hH) \\
+                aH &= bH
+            \end{align*}
+
+            \item Suppose \(aH \cap bH \neq \emptyset\). Let \(x\in aH \cap bH\). Then, \(x = ah_1 = bh_2\) for some \(h_1, h_2\in H\), and so
+            \begin{align*}
+                (ah_1)H &= (bh_2)H \\
+                a(h_1H) &= b(h_2H) \\
+                aH &= bH
+            \end{align*}
+
+            \item For the forward direction, suppose \(aH = bH\). Then,
+            \begin{align*}
+                a^{-1}(aH) &= a^{-1}(bH) \\
+                (a^{-1}a)H &= (a^{-1}b)H \\
+                eH &= (a^{-1}b)H \\
+                H &= (a^{-1}b)H
+            \end{align*}
+            This implies \(a^{-1}b\in H\). And for the backward direction, suppose that \(a^{-1}b\in H\). Then,
+            \begin{align*}
+                H &= a^{-1}bH \\
+                aH &= aa^{-1}bH \\
+                aH &= bH
+            \end{align*}
+
+            \item We prove that \(|aH| = |bH|\) using the bijective principle. Define \(\rho : aH \to bH\) where \(\rho(ah) = bh\). To prove that \(\rho\) is injective, suppose \(\rho(ah_1) = \rho(ah_2)\). Then,
+            \begin{align*}
+                \rho(ah_1) &= \rho(ah_2) \\
+                bh_1 &= bh_2 \\
+                h_1 &= h_2 \\
+                ah_1 &= ah_2
+            \end{align*}
+
+            And to show that \(\rho\) is surjective, let \(x\in bH\) be arbitrary. Then, \(x = bh\) for some \(h\in H\). It is obvious that \(\rho(ah) = bh\), so there exists some element in \(aH\) that \(\rho\) maps to \(bh\). 
+
+            Therefore, \(\rho\) is bijective. By the bijective principle, \(|aH| = |bH|\).
+
+            \item For the forward direction, suppose \(aH = Ha\). Then,
+            \begin{align*}
+                aHa^{-1} &= Haa^{-1} \\
+                aHa^{-1} &= H.
+            \end{align*}
+            For the backward direction, suppose \(H = aHa^{-1}\).
+        \end{enumerate}
+    \end{proof}
+
+    \begin{thm}
+        If \(H\) is a subgroup and \(a\not\in H\), then \(aH\) is not a subgroup.
+    \end{thm}
+
+    \begin{proof}
+        Suppose that \(aH\) is a subgroup. Then, \(aH \cap H \neq \emptyset\) since the identity element is both in \(aH\) and \(H\). Also, since \(a\not\in H\), this means \(aH \neq H\). This contradicts the second \hyperref[thm:coset-property]{coset property}, so \(aH\) must not be a subgroup.
+    \end{proof}
+
+    \begin{thm}[Lagrange's Theorem]
+        If \(G\) is a finite group and \(H \leq G\), then \(|H|\) divides \(|G|\). Moreover, the number of distinct left (right) cosets of \(H\) in \(G\) is \(|G|/|H|\).
+    \end{thm}
+
+    \begin{proof}
+        Suppose \(G\) is a finite group and \(H \leq G\). Let \(a_1H, a_2H, \ldots, a_k H\) be the distinct left cosets of \(H\) in \(G\). Every element must belong to some coset, as \(g \in gH\). We then have
+        \begin{align*}
+            \bigcup_{i = 1}^k a_i H &= G \\
+            \left|\bigcup_{i = 1}^k a_i H\right| &= |G|
+        \end{align*}
+        And since cosets are distinct, we can split the cardinality of the union to a sum of cardinalities:
+        \begin{align*}
+            \sum_{i = 1}^k |a_i H| &= |G| \\
+            \sum_{i = 1}^k |H| &= |G| \\
+            k|H| &= |G|
+        \end{align*}
+        Hence, the order of \(H\) divides the order of \(G\) as desired. Also, we declared \(k\) to be the number of distinct left cosets. By solving for \(k\) from the last line, we get \(k = |G|/|H|\).
+    \end{proof}
+
+    \begin{dfn}[Index of a subgroup]
+        \marker{dfn:subgroup-index}
+        The index of \(H\) in \(G\), denoted by \([G : H]\), is the number of distinct left (right) cosets of \(H\) in \(G\) defined as \[[G : H] = \frac{|G|}{|H|}.\]
+    \end{dfn}
+
+    \begin{note}
+        The more important part of Definition \ref{dfn:subgroup-index} is the number of distinct cosets, not the division of orders. This is because it will fail for infinite groups, i.e., \([\int : 2\int]\) which is 2, but both \(\int\) and \(2\int\) are of infinite order.
+    \end{note}
+
+    \begin{thm}
+        \marker{thm:element-order-divides-group-order}
+        In a finite group, the order of each group element divides the order of the group.
+    \end{thm}
+
+    \begin{proof}
+        Each element \(a\in G\) can be used to generate a subgroup \(\langle a\rangle\). Since \(|a| = |\langle a \rangle|\) and \(|\langle a \rangle|\) divides\textsuperscript{\hyperref[cor:same-order-element-generator]{[1]}} \(|G|\), then \(|a|\) divides \(|G|\).
+    \end{proof}
+
+    \begin{thm}
+        A group of prime order is cyclic.
+    \end{thm}
+
+    \begin{proof}
+        Let the order of a group be \(p\) where \(p\) is a prime number. The divisors of a prime number \(p\) is 1 and itself. Only the identity element is of order \(1\), hence the order of all other elements \(a\) must be \(p\). This implies that \(a\) generates the entire group. Hence, \(\langle g\rangle = G\).
+    \end{proof}
+
+    \begin{thm}
+        Let \(G\) be a finite group, and let \(a \in G\). Then, \(a^{|G|} = e\).
+    \end{thm}
+
+    \begin{proof}
+        By Theorem \ref{thm:element-order-divides-group-order}, \(|G|\) is a multiple of \(|a|\). This means \(|G| = k|a|\) for some integer \(k\). Then, \(a^{|G|} = a^{k|a|} = (a^{|a|})^k = e^k = e\).
+    \end{proof}

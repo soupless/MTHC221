@@ -1,0 +1,165 @@
+\section{Normal subgroups and group homomorphisms}
+    \renewcommand{\leftmark}{May 08, 2024}
+
+    \begin{dfn}[Normal subgroup]
+        A subgroup \(H\) of a group \(G\) is normal in \(G\), written \(H \normalsubeq G\), if \(gH = Hg\) for all \(g\in G\).
+    \end{dfn}
+
+    \begin{example}
+        \mbox{}
+
+        \begin{itemize}
+            \item If \(G\) is abelian and \(H \leq G\), then \(H \normalsubeq G\).
+            \item Let \(n > 1\). Then, \(A_n \normalsub S_n\).
+        \end{itemize}
+    \end{example}
+
+    \begin{example}
+        Let \(G\) be a group and \(H < G\) such that \([G : H] = 2\). Then, \(H \normalsub G.\)
+    \end{example}
+
+    \begin{proof}
+        Since \([G : H] = 2\), then \(H\) has two cosets, namely \(H\) and \(xH\) for some \(x\not\in H\). If \(a \in H\), then \(aH = Ha = H\). If not, notice that \(xH = G\backslash H\) and \(Hx = G\backslash H\), so \(xH = Hx\).
+
+        This means that \(H \normalsub G\).
+    \end{proof}
+
+    \begin{thm}[Normal subgroup test]
+        \marker{thm:normalsub-test}
+        Let \(G\) be a group and let \(H\) be a subgroup of \(G\). Then \(H \normalsubeq G\) iff \(xHx^{-1} \subseteq H\) for all \(x\in G\).
+    \end{thm}
+
+    \begin{proof}
+        \mbox{}
+        \begin{itemize}
+            \item[\((\implies)\)] Assume \(H \normalsubeq G\). Then, \(xH = Hx\) for all \(x\in G\). This implies \(xHx^{-1} = H \subseteq H\).
+
+            \item [\((\Longleftarrow)\)] Suppose \(xHx^{-1} \subseteq H\) for all \(x\in G\). Then,
+            \begin{align*}
+                xHx^{-1} &\subseteq H \\
+                xH &\subseteq Hx \\\\
+                x^{-1}Hx &\subseteq H \\
+                Hx &\subseteq xH
+            \end{align*}
+            Hence, \(xH = Hx\) so \(H \normalsubeq G\).
+        \end{itemize}
+    \end{proof}
+
+    \begin{thm}
+        Let \(H \normalsubeq G\) and \(K \leq G\). Then \[HK = \left\{hk \,\mid\, h\in H, k\in K\right\}\] is a subgroup of \(G\).
+    \end{thm}
+
+    \begin{proof}
+        \(HK \neq \emptyset\) since \(ee = e \in HK\). Let \(h_1 k_1, h_2 k_2 \in HK\) where \(h_1, h_2 \in H\) and \(k_1, k_2 \in K\). We show that \(HK\) is a subgroup using the one-step subgroup test. Then, 
+        \begin{align*}
+            (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1} \\
+            (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1}k_2k_2^{-1} \\
+            (h_1k_1)(h_2k_2)^{-1} &= h_1k_1(k_2^{-1}h_2^{-1}k_2)k_2^{-1}
+        \end{align*}
+        We can see that \(k_2^{-1}h_2^{-1}k_2 \in H\). Let this be equal to \(h_3\). Then, \((h_1k_1)(h_2k_2)^{-1} = h_1k_1h_3k_2^{-1}\).
+    \end{proof}
+
+    \begin{thm}
+        \marker{thm:conjugate-coset}
+        If \(H \leq G\), then \(xHx^{-1} \leq G\) for all \(x \in G\).
+    \end{thm}
+
+    \begin{proof}
+        It is trivial that \(xHx^{-1} \neq \emptyset\) since \(xex^{-1} = e \in xHx^{-1}\). Let \(xh_1x^{-1}, xh_2x^{-1} \in xHx^{-1}\). Then,
+        \begin{align*}
+            (xh_1x^{-1})(xh_2x^{-1})^{-1} &= xh_1x^{-1}xh_2x^{-1} \\
+            (xh_1x^{-1})(xh_2x^{-1})^{-1} &= xh_1h_2^{-1}x^{-1}
+        \end{align*}
+        Since \(h_1, h_2\in H\), then \(h_1h_2^{-1} \in H\). This means \(xh_1h_2^{-1}x^{-1}\) is in \(xHx^{-1}\). Hence, \(xHx^{-1} \leq G\)
+    \end{proof}
+
+    \begin{thm}
+        \marker{thm:conjugate-coset-ord}
+        If \(H \leq H\), then \(|xHx^{-1}| = |H|\) for all \(x\in G\).
+    \end{thm}
+
+    A sketch of proof for this theorem is to use the bijective principle using the mapping \(\rho : xHx^{-1} \to H\) defined by \(\rho(xhx^{-1}) = h\).
+
+    \begin{thm}
+        Let \(G\) be a group and \(H\) is a unique subgroup of finite order. Then \(H \normalsubeq G\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(x\in G\). Assume \(H \leq G\). By Theorem \ref{thm:conjugate-coset}, \(xHx^{-1} \leq G\). By Theorem \ref{thm:conjugate-coset-ord}, \(|xHx^{-1}| = |H|\). Since \(H\) is the unique subgroup of order \(H\), then \(xHx^{-1} = H\) for all \(x \in G\). This implies \(xH = Hx\), so \(H \normalsubeq G\).
+    \end{proof}
+
+    \begin{thm}[Factor Group/Quotient Group]
+        Let \(G\) be a group and let \(H \normalsubeq G\). The set of all left (right) cosets of \(H\) in \(G\) forms a group under the operation \((aH)(bH) = (ab)H.\)
+
+        The factor group is denoted by \(G/H\).
+    \end{thm}
+
+    \begin{note}
+        \(G/H\) means \(G\) modulo \(H\).
+    \end{note}
+
+    \begin{proof}
+        We will show that \(G/H\) is a group. First, we need to establish that the operation is well-defined. Let \(aH = a'H\) and \(bH = b'H\). Then, \(a' = ah_1\) and \(b' = bh_2\) for some \(h_1\) and \(h_2\) in \(H\).
+
+        We show that \((ab)H = (a'b')H\).
+        \begin{align*}
+            (a'H)(b'H) &= (a'b')H \\
+            (a'H)(b'H) &= ah_1bh_2H \\
+            (a'H)(b'H) &= ah_1bH \\
+            (a'H)(b'H) &= ah_1Hb \\
+            (a'H)(b'H) &= aHb \\
+            (a'H)(b'H) &= abH
+        \end{align*}
+
+        Hence, the operation is well-defined. Checking that the operation satisfies the group axioms is trivial, hence \(G/H\) is a group.
+    \end{proof}
+
+    \begin{dfn}[Group homomorphism]
+        Let \(G\) and \(G'\) be groups. A homomorphism \(\phi\) is a function \(\phi : G \to G'\) that preserves group operations, that is, \[\phi(a * b) = \phi(a) \cdot \phi(b)\] for all \(a, b\in G\).
+    \end{dfn}
+
+    \begin{example}
+        Consider the mapping \(\phi : \real^* \to \real^*\) defined by \(\phi(x) = |x|\). We claim that \(\phi\) is a homomorphism. 
+
+        Let \(a,b\in\real^*\). Then,
+        \begin{align*}
+            \phi(ab) &= |ab| \\
+            \phi(ab) &= |a||b| \\
+            \phi(ab) &= \phi(a)\phi(b)
+        \end{align*}
+        Hence, \(\phi\) is a homomorphism.
+    \end{example}
+
+    \begin{example}
+        The mapping \(\theta : \int \to \int_n\) defined by \(\theta(x) = x \pmod{n}\) is a homomorphism.
+
+        Let \(a,b\in\int\). Then,
+        \begin{align*}
+            \theta(a + b) &= (a + b) \pmod{n} \\
+            \theta(a + b) &= a \pmod{n} \oplus b \pmod{n} \\
+            \theta(a + b) &= \theta(a) \oplus \theta(b)
+        \end{align*}
+        Hence, \(\theta\) is a homomorphism.
+    \end{example}
+
+    \begin{dfn}[Kernel of homomorphism]
+        The kernel of a homomorphism \(\phi : G \to G'\), denoted by \(\ker\phi\), is defined as \[\ker\phi = \{x\in G \,\mid\, \phi(x) = e'\}\]
+        where \(e'\) is the identity element in \(G'\).
+    \end{dfn}
+
+    \begin{example}
+        To find the kernel for the previous examples,
+        \begin{align*}
+            \phi(x) &= 1 \\
+            |x| &= 1 \\
+            x &= \pm 1
+        \end{align*}
+        Hence, \(\ker\phi = \{-1, 1\}\).
+        \begin{align*}
+            \theta(x) &= 0 \\
+            x &\equiv 0 \pmod{n} \\
+            x - 0 &= nk \quad(\exists k\in\int) \\
+            x &= nk
+        \end{align*}
+        This means that \(x\) is of the form \(nk\) where \(k\) is a particular integer. But notice that \(\theta(nk) = nk \pmod{n} = 0\), so it doesn't matter which \(k\) is used. Therefore, \(\ker\theta = \{nk\,\mid\, k\in\int\}\).
+    \end{example}

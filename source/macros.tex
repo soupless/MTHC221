@@ -44,7 +44,7 @@
 
 \renewcommand{\sectionmark}[1]{\markboth{}{Lecture \thesection: #1}}
 
-\titleformat{\section}{\Large\bfseries}{Lecture~\thesection:}{1ex}{}
+\titleformat{\section}{\Large\bfseries}{\phantomsection Lecture~\thesection:}{1ex}{}
 
 \setlength{\parindent}{0.25in}
 \setlength{\parskip}{10pt}
@@ -76,9 +76,12 @@
 \newcommand{\real}{\mathbb{R}}
 \newcommand{\rat}{\mathbb{Q}}
 
-\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\lcm}{lcm}
 
-\newcommand{\marker}[1]{\phantomsection\label{#1}}
+\renewcommand{\implies}{\Longrightarrow}
+\newcommand{\backimplies}{\Longleftarrow}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\marker}[1]{\label{#1}\phantomsection}
 
 \newcommand{\ExternalLink}{%
     \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
@@ -104,3 +107,6 @@
 \newcounter{quizcounter}
 \renewcommand\thequizcounter{\arabic{quizcounter}}
 \DeclareMathOperator{\id}{id}
+
+\newcommand{\normalsubeq}{\trianglelefteq}
+\newcommand{\normalsub}{\triangleleft}

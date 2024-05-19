@@ -1,0 +1,48 @@
+\section{Permutations, continued}
+    \renewcommand{\leftmark}{April 17, 2024}
+
+    \begin{thm}
+        If \(\epsilon = \beta_1\beta_2\cdots\beta_r\) where \(\epsilon\) is the identity function and \(\beta_i\) is a 2-cycle for \(i = 1, 2, \ldots, r\), then \(r\) is even.
+    \end{thm}
+
+    \begin{thm}
+        Let \(\alpha\) be a permutation in \(S_n\), \(n > 1\). Suppose \(\alpha\) can be written as \(\beta_1\beta_2\cdots\beta_s\) and \(\gamma_1\gamma_2\cdots\gamma_t\) where \(\beta_i\) and \(\gamma_j\) are 2-cycles. Then, \(s\) and \(t\) are either both even or both odd.
+    \end{thm}
+
+    \begin{proof}
+        Let \(\alpha\) be a permutation in \(S_n\) for \(n > 1\), and suppose that it can be written as a product of 2-cycles \(\beta_1\beta_2\cdots\beta_s\) and \(\gamma_1\gamma_2\cdots\gamma_t\). Then,
+        \begin{align*}
+            \beta_1\beta_2\cdots\beta_s &= \gamma_1\gamma_2\cdots\gamma_t \\
+            (\beta_1\beta_2\cdots\beta_s)(\beta_1\beta_2\cdots\beta_s)^{-1} &= (\gamma_1\gamma_2\cdots\gamma_t)(\beta_1\beta_2\cdots\beta_s)^{-1} \\
+            \id &= \gamma_1\gamma_2\cdots\gamma_t\beta_s\cdots\beta_2\beta_1
+        \end{align*}
+        The right-hand side is composed of \(s + t\) transpositions, and the left-hand side is an identity permutation. Hence, \(s + t\) must be even, which is only possible if both \(s\) and \(t\) are odd, or both of them are even.
+    \end{proof}
+
+    \begin{thm}
+        The set of even permutations in \(S_n\), \(n > 1\), is a subgroup of \(S_n\).
+    \end{thm}
+
+    \begin{proof}
+        Let \(H = \{\sigma\in S_n \,\mid\, \sigma\text{ is an even permutation}\}\). We show that \(H_n \leq S_n\) using the finite subgroup test.
+
+        Let \(\rho, \tau\in H\). Then \(\rho\) has \(2j\) 2-cycles, and \(\tau\) has \(2j\) 2-cycles. Hence, \(\rho\tau\) has \(2j + 2k\) 2-cycles, which implies \(\rho\tau\in H\). Therefore, \(H \leq S_n\).
+    \end{proof}
+
+    \begin{dfn}[Alternating group]
+        The group of even permutations on \(n\) symbols is denoted by \(A_n\) and is called the alternating group of degree \(n\).
+    \end{dfn}
+
+    \begin{thm}
+        For \(n > 1\), the number of even permutations in \(S_n\) is equal to the number of odd permutations, hence, \(|A_n| = n!/2\).
+    \end{thm}
+
+    \begin{proof}
+        We use the bijective principle. Construct the function \(f : A_n \to  B_n\) where \(A_n\) and \(B_n\) each contains all even and odd permutations, respectively. Choose a transposition \(\sigma\) from \(S_n\). We define \(f\) as \(f(\tau) = \tau\sigma\). Clearly, \(f\) is injective since
+        \begin{align*}
+            f(\tau_1) &= f(\tau_2) \\
+            \tau_1\sigma &= \tau_2\sigma \\
+            \tau_1 &= \tau_2
+        \end{align*}
+        It is also surjective. Fix \(\rho \in B_n\), and we need to find \(\tau\in A_n\) such that \(f(\tau) = \rho\). We can choose \(\tau = \rho\sigma\), since \(f(\rho\sigma) = \rho\sigma\sigma = \rho\). Hence, \(f\) is bijective, and so \(|A_n| = |B_n|\). Since \(|S_n| = |A_n \cup B_n|\) and \(A_n\) and \(B_n \) are disjoint, then \(|S_n| = 2|A_n| \implies 2|A_n| = n! \implies |A_n| = n!/2\).
+    \end{proof}
